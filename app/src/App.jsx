@@ -25,10 +25,29 @@ function Router() {
   }
 }
 
+function ResetDemoButton() {
+  const handleReset = () => {
+    try {
+      window.localStorage.removeItem("pastmark:profile");
+      window.localStorage.removeItem("pastmark:session");
+    } catch {
+      // storage unavailable — nothing to clear
+    }
+    window.location.reload();
+  };
+
+  return (
+    <button type="button" className="pm-reset-demo" onClick={handleReset} title="Clear today's progress and streak, start over">
+      ↺ Reset demo
+    </button>
+  );
+}
+
 export default function App() {
   return (
     <GameProvider>
       <Router />
+      <ResetDemoButton />
     </GameProvider>
   );
 }

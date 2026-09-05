@@ -1,0 +1,122 @@
+:root {
+  --ink: #1F2B2E;
+  --deep-ink: #143138;
+  --paper: #F2EBDD;
+  --card: #FFFDF8;
+  --rule: #E4DAC6;
+  --muted-ink: #5A6663;
+  --muted-paper: #BCC89F;
+
+  --oxblood: #7C3247;
+  --oxblood-hover: #6A2A3C;
+  --indigo: #3F5E73;
+  --green: #6B8E4E;
+  --bronze: #A9763F;
+  --rust: #A6402C;
+
+  --tint-oxblood: #FFF6F1;
+  --tint-green: #F4F6EC;
+
+  --font-serif: 'Spectral', Georgia, serif;
+  --font-sans: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --radius-card: 14px;
+  --radius-option: 12px;
+  --radius-button: 10px;
+  --radius-chip: 6px;
+  --radius-pill: 999px;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 40px;
+
+  --breakpoint-desktop: 900px;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.pm-app {
+  height: 100%;
+  min-height: 100%;
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+}
+
+.pm-mono-label {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.pm-btn {
+  border: none;
+  border-radius: var(--radius-button);
+  padding: 17px;
+  font: 600 16px/1 var(--font-sans);
+  background: var(--oxblood);
+  color: var(--card);
+  transition: background .15s ease;
+}
+.pm-btn:hover:not(:disabled) { background: var(--oxblood-hover); }
+.pm-btn:disabled {
+  background: var(--rule);
+  color: var(--muted-ink);
+  cursor: not-allowed;
+}
+.pm-btn--ghost {
+  background: transparent;
+  border: 1px solid var(--oxblood);
+  color: var(--oxblood);
+}
+.pm-btn--dark {
+  background: var(--ink);
+  color: var(--card);
+}
+
+@media (min-width: 900px) {
+  .pm-btn { padding: 19px 40px; font-size: 17px; width: auto; }
+}
+
+.pm-card {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-card);
+}
+
+.pm-visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.pm-focusable:focus-visible {
+  outline: 3px solid var(--indigo);
+  outline-offset: 2px;
+}

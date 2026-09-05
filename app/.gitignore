@@ -1,0 +1,4 @@
+node_modules
+dist
+.env.local
+pw_test.mjs

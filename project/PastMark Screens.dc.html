@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#1F2B2E; font-family:'IBM Plex Sans',system-ui,sans-serif; color:#1F2B2E; }
+  a { color:#7C3247; text-decoration:none; }
+  a:hover { color:#A6402C; text-decoration:underline; }
+</style>
+</helmet>
+
+<section id="1a" data-screen-label="PastMark Daily — screen flow" style="padding:56px 56px 96px;display:flex;flex-direction:column;gap:8px;background:#1F2B2E">
+
+  <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap">
+    <div style="font:600 11px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#A9763F;border:1px solid #A9763F;padding:6px 9px;border-radius:4px">1A</div>
+    <h1 style="margin:0;font:600 40px/1.05 Spectral,serif;color:#FFFDF8;letter-spacing:-.01em">PastMark Daily — user flow screens</h1>
+  </div>
+  <p style="margin:0 0 40px;max-width:760px;font:400 15px/1.6 'IBM Plex Sans',sans-serif;color:#BCC89F;text-wrap:pretty">Nineteen screens covering entry, all seven Marks of a single day's Subject in their fixed order — Pin, When, Know, See, Era, Succession, Match — their select and reveal states, and the session conclusion. The worked Subject here is Constantinople. Colors are the PastMark token set exactly; oxblood <span style="font-family:'IBM Plex Mono',monospace">#7C3247</span> carries primary action, bronze <span style="font-family:'IBM Plex Mono',monospace">#A9763F</span> is reserved for achievement moments only.</p>
+
+  <!-- ============ STAGE 1 — ENTRY ============ -->
+  <div style="display:flex;align-items:center;gap:14px;margin:0 0 22px">
+    <span style="font:600 12px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#F2EBDD">01 — ENTRY</span>
+    <span style="flex:1;height:1px;background:#5A6663"></span>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:40px;margin-bottom:64px">
+
+    <!-- 1. Landing / not started -->
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#BCC89F">LANDING — NOT STARTED · THEME WITHHELD</div>
+      <div style="width:390px;height:844px;background:#F2EBDD;border-radius:22px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 18px 44px rgba(0,0,0,.35)">
+        <div style="background:#1F2B2E;padding:56px 26px 26px;display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <div style="font:600 20px/1 Spectral,serif;color:#FFFDF8;letter-spacing:.04em">PastMark</div>
+            <div style="display:flex;align-items:center;gap:7px;border:1px solid #5A6663;border-radius:999px;padding:5px 11px">
+              <span style="width:7px;height:7px;border-radius:50%;background:#6B8E4E;display:block"></span>
+              <span style="font:600 12px/1 'IBM Plex Mono',monospace;color:#F2EBDD">12 day streak</span>
+            </div>
+          </div>
+          <div style="font:400 13px/1.5 'IBM Plex Sans',sans-serif;color:#BCC89F">Thursday, 4 September 2026 · Daily 412</div>
+        </div>
+
+        <div style="flex:1;padding:24px 22px;display:flex;flex-direction:column;gap:18px">
+          <div style="background:#FFFDF8;border:1px solid #E4DAC6;border-radius:14px;padding:26px 22px 22px;display:flex;flex-direction:column;gap:18px">
+            <div style="font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#5A6663">TODAY'S CHALLENGE</div>
+            <div style="font:600 30px/1.15 Spectral,serif;letter-spacing:-.01em">Seven Marks, one subject</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px">
+              <span style="font:600 10px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;color:#3F5E73;border:1px solid #E4DAC6;border-radius:4px;padding:6px 7px">1 PIN</span>
+              <span style="font:600 10px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;color:#3F5E73;border:1px solid #E4DAC6;border-radius:4px;padding:6px 7px">2 WHEN</span>
+              <span style="font:600 10px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;color:#3F5E73;border:1px solid #E4DAC6;border-radius:4px;padding:6px 7px">3 KNOW</span>
+              <span style="font:600 10px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;color:#3F5E73;border:1px solid #E4DAC6;border-radius:4px;padding:6px 7px">4 SEE</span>
+              <span style="font:600 10px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;color:#3F5E73;border:1px solid #E4DAC6;border-radius:4px;padding:6px 7px">5 ERA</span>
+              <span style="font:600 10px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;color:#3F5E73;border:1px solid #E4DAC6;border-radius:4px;padding:6px 7px">6 SUCCESSION</span>
+              <span style="font:600 10px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;color:#3F5E73;border:1px solid #E4DAC6;border-radius:4px;padding:6px 7px">7 MATCH</span>
+            </div>
+            <div style="height:1px;background:#E4DAC6"></div>
+            <div style="font:400 14px/1.55 'IBM Plex Sans',sans-serif;color:#5A6663;text-wrap:pretty">One place, person or event, from seven angles. Same subject for every player today. Roughly five minutes.</div>
+            <div style="background:#7C3247;border-radius:10px;padding:17px;text-align:center;font:600 16px/1 'IBM Plex Sans',sans-serif;color:#FFFDF8;letter-spacing:.01em" style-hover="background:#6A2A3C">Play Today's PastMark</div>
+            <div style="font:400 12px/1.5 'IBM Plex Sans',sans-serif;color:#5A6663;text-align:center">Today's subject stays hidden until Mark 1.</div>
+          </div>
+
+          <div style="background:#FFFDF8;border:1px solid #E4DAC6;border-radius:14px;padding:18px 20px;display:flex;flex-direction:column;gap:14px">
+            <div style="display:flex;align-items:baseline;justify-content:space-between">
+              <div style="font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#5A6663">COLLECTIONS</div>
+              <div style="font:400 12px/1 'IBM Plex Sans',sans-serif;color:#7C3247">View all</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <div style="display:flex;justify-content:space-between;font:500 13px/1 'IBM Plex Sans',sans-serif"><span>Byzantine Empire</span><span style="font-family:'IBM Plex Mono',monospace;color:#5A6663">17/20</span></div>
+                <div style="height:5px;background:#F2EBDD;border-radius:99px;overflow:hidden"><div style="width:85%;height:100%;background:#3F5E73"></div></div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <div style="display:flex;justify-content:space-between;font:500 13px/1 'IBM Plex Sans',sans-serif"><span>World Capitals</span><span style="font-family:'IBM Plex Mono',monospace;color:#5A6663">31/60</span></div>
+                <div style="height:5px;background:#F2EBDD;border-radius:99px;overflow:hidden"><div style="width:52%;height:100%;background:#3F5E73"></div></div>
+              </div>
+            </div>
+          </div>
+          <div style="flex:1"></div>
+          <div style="display:flex;justify-content:space-around;border-top:1px solid #E4DAC6;padding-top:14px">
+            <span style="font:600 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#1F2B2E">DAILY</span>
+            <span style="font:400 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#5A6663">COLLECTIONS</span>
+            <span style="font:400 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#5A6663">STREAK</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. In progress -->
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#BCC89F">LANDING — IN PROGRESS</div>
+      <div style="width:390px;height:844px;background:#F2EBDD;border-radius:22px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 18px 44px rgba(0,0,0,.35)">
+        <div style="background:#1F2B2E;padding:56px 26px 26px;display:flex;align-items:center;justify-content:space-between">
+          <div style="font:600 20px/1 Spectral,serif;color:#FFFDF8;letter-spacing:.04em">PastMark</div>
+          <div style="display:flex;align-items:center;gap:7px;border:1px solid #5A6663;border-radius:999px;padding:5px 11px">
+            <span style="width:7px;height:7px;border-radius:50%;background:#6B8E4E;display:block"></span>
+            <span style="font:600 12px/1 'IBM Plex Mono',monospace;color:#F2EBDD">12 day streak</span>
+          </div>
+        </div>
+        <div style="flex:1;padding:24px 22px;display:flex;flex-direction:column;gap:18px">
+          <div style="background:#FFFDF8;border:1px solid #E4DAC6;border-radius:14px;padding:26px 22px 22px;display:flex;flex-direction:column;gap:18px">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div style="font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#5A6663">IN PROGRESS</div>
+              <div style="font:600 11px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#A6402C">SAVED</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <div style="font:600 30px/1.15 Spectral,serif;letter-spacing:-.01em">Mark 4 of 7</div>
+              <div style="font:400 14px/1.4 'IBM Plex Sans',sans-serif;color:#5A6663">Today's theme: Constantinople</div>
+            </div>
+            <div style="display:flex;gap:5px">
+              <span style="flex:1;height:6px;border-radius:99px;background:#6B8E4E"></span>
+              <span style="flex:1;height:6px;border-radius:99px;background:#6B8E4E"></span>
+              <span style="flex:1;height:6px;border-radius:99px;background:#6B8E4E"></span>
+              <span style="flex:1;height:6px;border-radius:99px;background:#3F5E73"></span>
+              <span style="flex:1;height:6px;border-radius:99px;background:#E4DAC6"></span>
+              <span style="flex:1;height:6px;border-radius:99px;background:#E4DAC6"></span>
+              <span style="flex:1;height:6px;border-radius:99px;background:#E4DAC6"></span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font:400 11px/1 'IBM Plex Mono',monospace;letter-spacing:.04em;color:#5A6663">
+              <span>PIN</span><span>WHEN</span><span>KNOW</span><span style="color:#3F5E73">SEE</span><span>ERA</span><span>SUCC</span><span>MATCH</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline">
+              <span style="font:400 14px/1 'IBM Plex Sans',sans-serif;color:#5A6663">Score so far</span>
+              <span style="font:600 27px/1 'IBM Plex Sans',sans-serif;letter-spacing:-.02em">3,316</span>
+            </div>
+            <div style="background:#7C3247;border-radius:10px;padding:17px;text-align:center;font:600 16px/1 'IBM Plex Sans',sans-serif;color:#FFFDF8">Continue — Mark 4 of 7</div>
+            <div style="font:400 13px/1.5 'IBM Plex Sans',sans-serif;color:#5A6663;text-align:center">Your first three Marks are locked in and safe.</div>
+          </div>
+          <div style="flex:1"></div>
+          <div style="display:flex;justify-content:space-around;border-top:1px solid #E4DAC6;padding-top:14px">
+            <span style="font:600 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#1F2B2E">DAILY</span>
+            <span style="font:400 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#5A6663">COLLECTIONS</span>
+            <span style="font:400 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#5A6663">STREAK</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Completed -->
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#BCC89F">LANDING — COMPLETED TODAY · THEME NAMED</div>
+      <div style="width:390px;height:844px;background:#F2EBDD;border-radius:22px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 18px 44px rgba(0,0,0,.35)">
+        <div style="background:#1F2B2E;padding:56px 26px 26px;display:flex;align-items:center;justify-content:space-between">
+          <div style="font:600 20px/1 Spectral,serif;color:#FFFDF8;letter-spacing:.04em">PastMark</div>
+          <div style="display:flex;align-items:center;gap:7px;border:1px solid #A9763F;border-radius:999px;padding:5px 11px">
+            <span style="width:7px;height:7px;border-radius:50%;background:#A9763F;display:block"></span>
+            <span style="font:600 12px/1 'IBM Plex Mono',monospace;color:#A9763F">13 day streak</span>
+          </div>
+        </div>
+        <div style="flex:1;padding:24px 22px;display:flex;flex-direction:column;gap:18px">
+          <div style="background:#FFFDF8;border:1px solid #E4DAC6;border-radius:14px;padding:26px 22px 22px;display:flex;flex-direction:column;gap:16px">
+            <div style="font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#5A6663">TODAY'S THEME</div>
+            <div style="font:600 32px/1.1 Spectral,serif;letter-spacing:-.01em">Constantinople</div>
+            <div style="height:1px;background:#E4DAC6"></div>
+            <div style="display:flex;align-items:baseline;justify-content:space-between">
+              <span style="font:400 13px/1 'IBM Plex Sans',sans-serif;color:#5A6663">Your score</span>
+              <span style="font:600 46px/1 'IBM Plex Sans',sans-serif;letter-spacing:-.03em">6,470</span>
+            </div>
+            <div style="display:flex;gap:4px">
+              <span style="width:12px;height:12px;border-radius:3px;background:#6B8E4E;display:block"></span>
+              <span style="width:12px;height:12px;border-radius:3px;background:#6B8E4E;display:block"></span>
+              <span style="width:12px;height:12px;border-radius:3px;background:#6B8E4E;display:block"></span>
+              <span style="width:12px;height:12px;border-radius:3px;background:#A6402C;display:block"></span>
+              <span style="width:12px;height:12px;border-radius:3px;background:#6B8E4E;display:block"></span>
+              <span style="width:12px;height:12px;border-radius:3px;background:#6B8E4E;display:block"></span>
+              <span style="width:12px;height:12px;border-radius:3px;background:#A9763F;display:block"></span>
+            </div>
+            <div style="font:400 14px/1.55 'IBM Plex Sans',sans-serif;color:#5A6663;text-wrap:pretty">Today's subject is done. A new subject unlocks at midnight UTC — <span style="font-family:'IBM Plex Mono',monospace;color:#1F2B2E">6h 12m</span>.</div>
+            <div style="border:1px solid #7C3247;border-radius:10px;padding:16px;text-align:center;font:600 15px/1 'IBM Plex Sans',sans-serif;color:#7C3247">See results</div>
+            <div style="background:#1F2B2E;border-radius:10px;padding:16px;text-align:center;font:600 15px/1 'IBM Plex Sans',sans-serif;color:#FFFDF8">Share your result</div>
+          </div>
+          <div style="background:#FFFDF8;border:1px solid #A9763F;border-radius:14px;padding:18px 20px;display:flex;flex-direction:column;gap:6px">
+            <div style="font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#A9763F">NEW DISCOVERIES</div>
+            <div style="font:400 15px/1.5 'IBM Plex Sans',sans-serif">Byzantine Empire · Ottoman Empire · World Capitals</div>
+            <div style="font:400 12px/1.5 'IBM Plex Sans',sans-serif;color:#5A6663">One subject, three collections advanced.</div>
+          </div>
+          <div style="flex:1"></div>
+          <div style="display:flex;justify-content:space-around;border-top:1px solid #E4DAC6;padding-top:14px">
+            <span style="font:600 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#1F2B2E">DAILY</span>
+            <span style="font:400 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#5A6663">COLLECTIONS</span>
+            <span style="font:400 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#5A6663">STREAK</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Explainer -->
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#BCC89F">FIRST RUN — HOW TODAY WORKS</div>
+      <div style="width:390px;height:844px;box-sizing:border-box;background:#1F2B2E;border-radius:22px;overflow:hidden;display:flex;flex-direction:column;padding:56px 26px 32px;box-shadow:0 18px 44px rgba(0,0,0,.35)">
+        <div style="display:flex;justify-content:flex-end;font:500 13px/1 'IBM Plex Sans',sans-serif;color:#BCC89F">Skip</div>
+        <div style="margin-top:36px;font:600 34px/1.12 Spectral,serif;color:#FFFDF8;letter-spacing:-.01em">One subject. Seven angles.</div>
+        <div style="margin-top:14px;font:400 15px/1.6 'IBM Plex Sans',sans-serif;color:#BCC89F;text-wrap:pretty">Today's seven Marks are all about one place, person or event — and most are graded on how near you got, not just whether you nailed it.</div>
+        <div style="margin-top:28px;display:flex;flex-direction:column;gap:12px">
+          <div style="background:#143138;border:1px solid #5A6663;border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:9px">
+            <div style="font:600 11px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#BCC89F">THE ORDER NEVER CHANGES</div>
+            <div style="font:400 14px/1.55 'IBM Plex Sans',sans-serif;color:#FFFDF8">Place, time, identity, image, era, what came next, relationships.</div>
+            <div style="display:flex;gap:4px;margin-top:2px">
+              <span style="flex:1;height:5px;border-radius:99px;background:#3F5E73"></span>
+              <span style="flex:1;height:5px;border-radius:99px;background:#3F5E73"></span>
+              <span style="flex:1;height:5px;border-radius:99px;background:#3F5E73"></span>
+              <span style="flex:1;height:5px;border-radius:99px;background:#3F5E73"></span>
+              <span style="flex:1;height:5px;border-radius:99px;background:#3F5E73"></span>
+              <span style="flex:1;height:5px;border-radius:99px;background:#3F5E73"></span>
+              <span style="flex:1;height:5px;border-radius:99px;background:#3F5E73"></span>
+            </div>
+          </div>
+          <div style="background:#143138;border:1px solid #5A6663;border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:9px">
+            <div style="font:600 11px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#BCC89F">PIN &amp; WHEN</div>
+            <div style="font:400 14px/1.55 'IBM Plex Sans',sans-serif;color:#FFFDF8">A pin 4 km off the mark scores 98%. The right country alone scores far less.</div>
+            <div style="display:flex;align-items:center;gap:8px">
+              <span style="flex:1;height:6px;border-radius:99px;background:linear-gradient(90deg,#6B8E4E,#A9763F,#A6402C)"></span>
+              <span style="font:600 11px/1 'IBM Plex Mono',monospace;color:#BCC89F">DECAY</span>
+            </div>
+          </div>
+          <div style="background:#143138;border:1px solid #5A6663;border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:9px">
+            <div style="font:600 11px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#BCC89F">KNOW, SEE, ERA &amp; SUCCESSION</div>
+            <div style="font:400 14px/1.55 'IBM Plex Sans',sans-serif;color:#FFFDF8">Multiple choice is all or nothing. Match pays per correct pair.</div>
+          </div>
+        </div>
+        <div style="flex:1"></div>
+        <div style="background:#7C3247;border-radius:10px;padding:17px;text-align:center;font:600 16px/1 'IBM Plex Sans',sans-serif;color:#FFFDF8">Start Mark 1 — Pin</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ STAGE 2 — SEVEN MARKS ============ -->
+  <div style="display:flex;align-items:center;gap:14px;margin:0 0 22px">
+    <span style="font:600 12px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#F2EBDD">02 — SEVEN MARKS, ONE SUBJECT: CONSTANTINOPLE</span>
+    <span style="flex:1;height:1px;background:#5A6663"></span>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:40px;margin-bottom:64px">
+
+    <!-- 5. PIN select -->
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#BCC89F">MARK 1 · PIN — PLACED, NOT LOCKED</div>
+      <div style="width:390px;height:844px;background:#FFFDF8;border-radius:22px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 18px 44px rgba(0,0,0,.35)">
+        <div style="background:#1F2B2E;padding:52px 20px 14px;display:flex;align-items:center;justify-content:space-between">
+          <span style="font:600 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#BCC89F">MARK 1 OF 7 · PIN</span>
+          <span style="font:600 15px/1 'IBM Plex Sans',sans-serif;color:#FFFDF8;letter-spacing:-.01em">0</span>
+        </div>
+        <div style="background:#1F2B2E;padding:0 20px 20px">
+          <div style="font:600 21px/1.32 'IBM Plex Sans',sans-serif;color:#FFFDF8;letter-spacing:-.015em;text-wrap:pretty">Where was Constantinople located?</div>
+        </div>
+        <div style="flex:1;position:relative;background:#143138;overflow:hidden">
+          <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,rgba(188,200,159,.14) 0 1px,transparent 1px 42px),repeating-linear-gradient(90deg,rgba(188,200,159,.14) 0 1px,transparent 1px 42px)"></div>
+          <svg viewBox="0 0 720 360" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;width:100%;height:100%">
+            <path d="{{ landPath }}" fill="#BCC89F" fill-opacity="0.9" stroke="#143138" stroke-width="0.6"></path>
+          </svg>
+          <div style="position:absolute;left:56%;top:38%;transform:translate(-50%,-100%);display:flex;flex-direction:column;align-items:center">
+            <div style="background:#3F5E73;color:#FFFDF8;font:600 11px/1 'IBM Plex Mono',monospace;padding:6px 8px;border-radius:4px;white-space:nowrap">YOUR PIN</div>
+            <div style="width:2px;height:16px;background:#3F5E73"></div>
+            <div style="width:14px;height:14px;border-radius:50%;background:#3F5E73;border:2px solid #FFFDF8;margin-top:-3px"></div>
+          </div>
+          <div style="position:absolute;left:16px;top:16px;display:flex;flex-direction:column;gap:1px;border-radius:8px;overflow:hidden;border:1px solid rgba(255,253,248,.3)">
+            <div style="width:34px;height:34px;background:rgba(31,43,46,.78);color:#FFFDF8;font:400 20px/34px 'IBM Plex Sans',sans-serif;text-align:center">+</div>
+            <div style="width:34px;height:34px;background:rgba(31,43,46,.78);color:#FFFDF8;font:400 20px/34px 'IBM Plex Sans',sans-serif;text-align:center">−</div>
+          </div>
+          <div style="position:absolute;left:16px;bottom:16px;background:rgba(31,43,46,.78);border-radius:6px;padding:7px 10px;font:400 11px/1 'IBM Plex Mono',monospace;color:#F2EBDD">Drag to adjust · pinch to zoom</div>
+        </div>
+        <div style="padding:18px 20px 30px;display:flex;flex-direction:column;gap:12px;border-top:1px solid #E4DAC6">
+          <div style="display:flex;justify-content:space-between;font:400 13px/1 'IBM Plex Sans',sans-serif;color:#5A6663">
+            <span>Pin placed — adjust freely</span><span style="font-family:'IBM Plex Mono',monospace">0:14</span>
+          </div>
+          <div style="background:#7C3247;border-radius:10px;padding:17px;text-align:center;font:600 16px/1 'IBM Plex Sans',sans-serif;color:#FFFDF8">Lock In</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. PIN reveal -->
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#BCC89F">MARK 1 · PIN — REVEAL, GRADED</div>
+      <div style="width:390px;height:844px;background:#FFFDF8;border-radius:22px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 18px 44px rgba(0,0,0,.35)">
+        <div style="background:#1F2B2E;padding:52px 20px 18px;display:flex;align-items:center;justify-content:space-between">
+          <span style="font:600 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#BCC89F">MARK 1 OF 7 · REVEAL</span>
+          <span style="font:600 15px/1 'IBM Plex Sans',sans-serif;color:#FFFDF8;letter-spacing:-.01em">1,082</span>
+        </div>
+        <div style="flex:1;position:relative;background:#143138;overflow:hidden">
+          <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,rgba(188,200,159,.14) 0 1px,transparent 1px 42px),repeating-linear-gradient(90deg,rgba(188,200,159,.14) 0 1px,transparent 1px 42px)"></div>
+          <svg viewBox="380 90 90 60" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;width:100%;height:100%">
+            <path d="{{ landPath }}" fill="#BCC89F" fill-opacity="0.9" stroke="#143138" stroke-width="0.3"></path>
+          </svg>
+          <div style="position:absolute;left:44%;top:52%;width:22%;height:1px;border-top:2px dashed #FFFDF8;opacity:.8;transform:rotate(-16deg);transform-origin:left center"></div>
+          <div style="position:absolute;left:44%;top:52%;transform:translate(-50%,-50%);width:14px;height:14px;border-radius:50%;background:#3F5E73;border:2px solid #FFFDF8"></div>
+          <div style="position:absolute;left:66%;top:44%;transform:translate(-50%,-100%);display:flex;flex-direction:column;align-items:center">
+            <div style="background:#7C3247;color:#FFFDF8;font:600 11px/1 'IBM Plex Mono',monospace;padding:6px 8px;border-radius:4px;white-space:nowrap">ISTANBUL, TÜRKİYE</div>
+            <div style="width:2px;height:14px;background:#7C3247"></div>
+            <div style="width:16px;height:16px;border-radius:50%;background:#7C3247;border:3px solid #FFFDF8;margin-top:-3px"></div>
+          </div>
+          <div style="position:absolute;left:16px;bottom:16px;background:rgba(31,43,46,.85);border-radius:6px;padding:8px 11px;font:600 12px/1 'IBM Plex Mono',monospace;color:#F2EBDD">MISS 34 km</div>
+        </div>
+        <div style="padding:20px;display:flex;flex-direction:column;gap:14px;border-top:1px solid #E4DAC6;background:#FFFDF8">
+          <div style="display:flex;align-items:center;gap:10px">
+            <span style="width:26px;height:26px;border-radius:50%;background:#6B8E4E;color:#FFFDF8;font:600 14px/26px 'IBM Plex Mono',monospace;text-align:center">✓</span>
+            <span style="font:600 20px/1 'IBM Plex Sans',sans-serif;letter-spacing:-.015em">Right on the Bosphorus</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:9px">
+            <div style="display:flex;flex-direction:column;gap:5px">
+              <div style="display:flex;justify-content:space-between;font:500 13px/1 'IBM Plex Sans',sans-serif"><span>Location accuracy</span><span style="font-family:'IBM Plex Mono',monospace;color:#6B8E4E">97%</span></div>
+              <div style="height:6px;background:#F2EBDD;border-radius:99px;overflow:hidden"><div style="width:97%;height:100%;background:#6B8E4E"></div></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;font:400 13px/1 'IBM Plex Sans',sans-serif;color:#5A6663"><span>Speed bonus</span><span style="font-family:'IBM Plex Mono',monospace;color:#1F2B2E">+112</span></div>
+          </div>
+          <div style="background:#F2EBDD;border-radius:10px;padding:14px 16px;display:flex;justify-content:space-between;align-items:baseline">
+            <span style="font:500 13px/1 'IBM Plex Sans',sans-serif;color:#5A6663">Points this Mark</span>
+            <span style="font:600 25px/1 'IBM Plex Sans',sans-serif;letter-spacing:-.02em">1,082</span>
+          </div>
+          <div style="font:400 13px/1.55 'IBM Plex Sans',sans-serif;color:#5A6663;text-wrap:pretty">Founded as Byzantium, refounded by Constantine in 330 on the European shore of the Bosphorus — the hinge between two continents.</div>
+          <div style="background:#7C3247;border-radius:10px;padding:17px;text-align:center;font:600 16px/1 'IBM Plex Sans',sans-serif;color:#FFFDF8">Next Mark — When</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. WHEN -->
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#BCC89F">MARK 2 · WHEN — TIMELINE DRAG</div>
+      <div style="width:390px;height:844px;background:#FFFDF8;border-radius:22px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 18px 44px rgba(0,0,0,.35)">
+        <div style="background:#1F2B2E;padding:52px 20px 14px;display:flex;align-items:center;justify-content:space-between">
+          <span style="font:600 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#BCC89F">MARK 2 OF 7 · WHEN</span>
+          <span style="font:600 15px/1 'IBM Plex Sans',sans-serif;color:#FFFDF8;letter-spacing:-.01em">1,082</span>
+        </div>
+        <div style="background:#1F2B2E;padding:0 20px 22px">
+          <div style="font:600 21px/1.32 'IBM Plex Sans',sans-serif;color:#FFFDF8;letter-spacing:-.015em;text-wrap:pretty">In what year did the city stop being called Constantinople?</div>
+        </div>
+        <div style="flex:1;padding:28px 20px;display:flex;flex-direction:column;gap:26px;background:#F2EBDD">
+          <div style="background:#FFFDF8;border:1px solid #E4DAC6;border-radius:14px;padding:24px 20px;display:flex;flex-direction:column;gap:8px;align-items:center">
+            <div style="font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#5A6663">YOUR ANSWER</div>
+            <div style="font:600 52px/1 'IBM Plex Sans',sans-serif;letter-spacing:-.03em;color:#3F5E73">1926</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="position:relative;height:44px">
+              <div style="position:absolute;top:19px;left:0;right:0;height:6px;background:#E4DAC6;border-radius:99px"></div>
+              <div style="position:absolute;top:19px;left:0;width:51%;height:6px;background:#3F5E73;border-radius:99px"></div>
+              <div style="position:absolute;top:4px;left:51%;transform:translateX(-50%);width:36px;height:36px;border-radius:50%;background:#FFFDF8;border:3px solid #3F5E73;box-shadow:0 4px 10px rgba(31,43,46,.18)"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;font:500 11px/1 'IBM Plex Mono',monospace;color:#5A6663">
+              <span>1850</span><span>1925</span><span>2000</span>
+            </div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px">
+              <span style="font:500 11px/1 'IBM Plex Mono',monospace;color:#3F5E73;background:#FFFDF8;border:1px solid #E4DAC6;border-radius:99px;padding:7px 10px">LATE OTTOMAN</span>
+              <span style="font:500 11px/1 'IBM Plex Mono',monospace;color:#3F5E73;background:#FFFDF8;border:1px solid #E4DAC6;border-radius:99px;padding:7px 10px">EARLY REPUBLIC</span>
+            </div>
+          </div>
+          <div style="font:400 13px/1.55 'IBM Plex Sans',sans-serif;color:#5A6663;text-wrap:pretty">Drag the handle to your year. Closer years score higher.</div>
+        </div>
+        <div style="padding:18px 20px 30px;border-top:1px solid #E4DAC6">
+          <div style="background:#7C3247;border-radius:10px;padding:17px;text-align:center;font:600 16px/1 'IBM Plex Sans',sans-serif;color:#FFFDF8">Lock In 1926</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. WHEN reveal -->
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#BCC89F">MARK 2 · WHEN — REVEAL</div>
+      <div style="width:390px;height:844px;background:#FFFDF8;border-radius:22px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 18px 44px rgba(0,0,0,.35)">
+        <div style="background:#1F2B2E;padding:52px 20px 18px;display:flex;align-items:center;justify-content:space-between">
+          <span style="font:600 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#BCC89F">MARK 2 OF 7 · REVEAL</span>
+          <span style="font:600 15px/1 'IBM Plex Sans',sans-serif;color:#FFFDF8;letter-spacing:-.01em">2,138</span>
+        </div>
+        <div style="flex:1;padding:26px 20px;display:flex;flex-direction:column;gap:22px;background:#F2EBDD">
+          <div style="display:flex;align-items:center;gap:10px">
+            <span style="width:26px;height:26px;border-radius:50%;background:#6B8E4E;color:#FFFDF8;font:600 14px/26px 'IBM Plex Mono',monospace;text-align:center">✓</span>
+            <span style="font:600 22px/1 'IBM Plex Sans',sans-serif;letter-spacing:-.015em">Four years out</span>
+          </div>
+          <div style="position:relative;height:96px;background:#FFFDF8;border:1px solid #E4DAC6;border-radius:14px;padding:0 20px">
+            <div style="position:absolute;top:56px;left:20px;right:20px;height:4px;background:#E4DAC6;border-radius:99px"></div>
+            <div style="position:absolute;left:51%;top:16px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:5px">
+              <span style="font:600 11px/1 'IBM Plex Mono',monospace;color:#3F5E73">YOU 1926</span>
+              <span style="width:2px;height:18px;background:#3F5E73"></span>
+              <span style="width:12px;height:12px;border-radius:50%;background:#3F5E73;border:2px solid #FFFDF8;margin-top:-4px"></span>
+            </div>
+            <div style="position:absolute;left:58%;top:62px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:5px">
+              <span style="width:14px;height:14px;border-radius:50%;background:#7C3247;border:3px solid #FFFDF8"></span>
+              <span style="font:600 11px/1 'IBM Plex Mono',monospace;color:#7C3247">1930</span>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;flex-direction:column;gap:5px">
+              <div style="display:flex;justify-content:space-between;font:500 13px/1 'IBM Plex Sans',sans-serif"><span>Time accuracy</span><span style="font-family:'IBM Plex Mono',monospace;color:#6B8E4E">96%</span></div>
+              <div style="height:6px;background:#E4DAC6;border-radius:99px;overflow:hidden"><div style="width:96%;height:100%;background:#6B8E4E"></div></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;font:400 13px/1 'IBM Plex Sans',sans-serif;color:#5A6663"><span>Speed bonus</span><span style="font-family:'IBM Plex Mono',monospace;color:#1F2B2E">+96</span></div>
+          </div>
+          <div style="background:#FFFDF8;border:1px solid #E4DAC6;border-radius:10px;padding:14px 16px;display:flex;justify-content:space-between;align-items:baseline">
+            <span style="font:500 13px/1 'IBM Plex Sans',sans-serif;color:#5A6663">Points this Mark</span>
+            <span style="font:600 25px/1 'IBM Plex Sans',sans-serif;letter-spacing:-.02em">1,056</span>
+          </div>
+          <div style="font:400 14px/1.6 'IBM Plex Sans',sans-serif;color:#5A6663;text-wrap:pretty">Both names were used for centuries. In 1930 the Turkish postal service made Istanbul the only official name, and foreign mail addressed to Constantinople was returned.</div>
+          <div style="flex:1"></div>
+          <div style="background:#7C3247;border-radius:10px;padding:17px;text-align:center;font:600 16px/1 'IBM Plex Sans',sans-serif;color:#FFFDF8">Next Mark — Know</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9. KNOW unselected -->
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#BCC89F">MARK 3 · KNOW — NOTHING PICKED</div>
+      <div style="width:390px;height:844px;background:#FFFDF8;border-radius:22px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 18px 44px rgba(0,0,0,.35)">
+        <div style="background:#1F2B2E;padding:52px 20px 14px;display:flex;align-items:center;justify-content:space-between">
+          <span style="font:600 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#BCC89F">MARK 3 OF 7 · KNOW</span>
+          <span style="font:600 15px/1 'IBM Plex Sans',sans-serif;color:#FFFDF8;letter-spacing:-.01em">2,138</span>
+        </div>
+        <div style="background:#1F2B2E;padding:0 20px 24px">
+          <div style="font:600 21px/1.32 'IBM Plex Sans',sans-serif;color:#FFFDF8;letter-spacing:-.015em;text-wrap:pretty">What is the current name of the city once called Constantinople?</div>
+        </div>
+        <div style="flex:1;padding:24px 20px;display:flex;flex-direction:column;gap:12px">
+          <div style="border:1px solid #E4DAC6;border-radius:12px;padding:18px;display:flex;align-items:center;gap:14px" style-hover="border-color:#7C3247">
+            <span style="width:26px;height:26px;border-radius:50%;border:1px solid #E4DAC6;font:600 12px/26px 'IBM Plex Mono',monospace;text-align:center;color:#5A6663">A</span>
+            <span style="font:400 16px/1.3 'IBM Plex Sans',sans-serif">Ankara</span>
+          </div>
+          <div style="border:1px solid #E4DAC6;border-radius:12px;padding:18px;display:flex;align-items:center;gap:14px">
+            <span style="width:26px;height:26px;border-radius:50%;border:1px solid #E4DAC6;font:600 12px/26px 'IBM Plex Mono',monospace;text-align:center;color:#5A6663">B</span>
+            <span style="font:400 16px/1.3 'IBM Plex Sans',sans-serif">Istanbul</span>
+          </div>
+          <div style="border:1px solid #E4DAC6;border-radius:12px;padding:18px;display:flex;align-items:center;gap:14px">
+            <span style="width:26px;height:26px;border-radius:50%;border:1px solid #E4DAC6;font:600 12px/26px 'IBM Plex Mono',monospace;text-align:center;color:#5A6663">C</span>
+            <span style="font:400 16px/1.3 'IBM Plex Sans',sans-serif">İzmir</span>
+          </div>
+          <div style="border:1px solid #E4DAC6;border-radius:12px;padding:18px;display:flex;align-items:center;gap:14px">
+            <span style="width:26px;height:26px;border-radius:50%;border:1px solid #E4DAC6;font:600 12px/26px 'IBM Plex Mono',monospace;text-align:center;color:#5A6663">D</span>
+            <span style="font:400 16px/1.3 'IBM Plex Sans',sans-serif">Bursa</span>
+          </div>
+          <div style="font:400 13px/1.5 'IBM Plex Sans',sans-serif;color:#5A6663;margin-top:4px">One answer. All or nothing on this one.</div>
+        </div>
+        <div style="padding:18px 20px 30px;border-top:1px solid #E4DAC6">
+          <div style="background:#E4DAC6;border-radius:10px;padding:17px;text-align:center;font:600 16px/1 'IBM Plex Sans',sans-serif;color:#5A6663">Lock In</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10. KNOW selected -->
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#BCC89F">MARK 3 · KNOW — SELECTED, LOCK IN ARMED</div>
+      <div style="width:390px;height:844px;background:#FFFDF8;border-radius:22px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 18px 44px rgba(0,0,0,.35)">
+        <div style="background:#1F2B2E;padding:52px 20px 14px;display:flex;align-items:center;justify-content:space-between">
+          <span style="font:600 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#BCC89F">MARK 3 OF 7 · KNOW</span>
+          <span style="font:600 15px/1 'IBM Plex Sans',sans-serif;color:#FFFDF8;letter-spacing:-.01em">2,138</span>
+        </div>
+        <div style="background:#1F2B2E;padding:0 20px 24px">
+          <div style="font:600 21px/1.32 'IBM Plex Sans',sans-serif;color:#FFFDF8;letter-spacing:-.015em;text-wrap:pretty">What is the current name of the city once called Constantinople?</div>
+        </div>
+        <div style="flex:1;padding:24px 20px;display:flex;flex-direction:column;gap:12px">
+          <div style="border:1px solid #E4DAC6;border-radius:12px;padding:18px;display:flex;align-items:center;gap:14px;opacity:.55">
+            <span style="width:26px;height:26px;border-radius:50%;border:1px solid #E4DAC6;font:600 12px/26px 'IBM Plex Mono',monospace;text-align:center;color:#5A6663">A</span>
+            <span style="font:400 16px/1.3 'IBM Plex Sans',sans-serif">Ankara</span>
+          </div>
+          <div style="border:2px solid #7C3247;background:#FFF6F1;border-radius:12px;padding:17px;display:flex;align-items:center;gap:14px">
+            <span style="width:26px;height:26px;border-radius:50%;background:#7C3247;color:#FFFDF8;font:600 12px/26px 'IBM Plex Mono',monospace;text-align:center">B</span>
+            <span style="font:600 16px/1.3 'IBM Plex Sans',sans-serif;color:#7C3247">Istanbul</span>
+          </div>
+          <div style="border:1px solid #E4DAC6;border-radius:12px;padding:18px;display:flex;align-items:center;gap:14px;opacity:.55">
+            <span style="width:26px;height:26px;border-radius:50%;border:1px solid #E4DAC6;font:600 12px/26px 'IBM Plex Mono',monospace;text-align:center;color:#5A6663">C</span>
+            <span style="font:400 16px/1.3 'IBM Plex Sans',sans-serif">İzmir</span>
+          </div>
+          <div style="border:1px solid #E4DAC6;border-radius:12px;padding:18px;display:flex;align-items:center;gap:14px;opacity:.55">
+            <span style="width:26px;height:26px;border-radius:50%;border:1px solid #E4DAC6;font:600 12px/26px 'IBM Plex Mono',monospace;text-align:center;color:#5A6663">D</span>
+            <span style="font:400 16px/1.3 'IBM Plex Sans',sans-serif">Bursa</span>
+          </div>
+          <div style="font:400 13px/1.5 'IBM Plex Sans',sans-serif;color:#5A6663;margin-top:4px">Tap another option to change your mind before locking in.</div>
+        </div>
+        <div style="padding:18px 20px 30px;border-top:1px solid #E4DAC6">
+          <div style="background:#7C3247;border-radius:10px;padding:17px;text-align:center;font:600 16px/1 'IBM Plex Sans',sans-serif;color:#FFFDF8">Lock In B</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11. SEE image options -->
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#BCC89F">MARK 4 · SEE — FOUR IMAGE OPTIONS (DEFAULT)</div>
+      <div style="width:390px;height:844px;background:#FFFDF8;border-radius:22px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 18px 44px rgba(0,0,0,.35)">
+        <div style="background:#1F2B2E;padding:52px 20px 14px;display:flex;align-items:center;justify-content:space-between">
+          <span style="font:600 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#BCC89F">MARK 4 OF 7 · SEE</span>
+          <span style="font:600 15px/1 'IBM Plex Sans',sans-serif;color:#FFFDF8;letter-spacing:-.01em">3,316</span>
+        </div>
+        <div style="background:#1F2B2E;padding:0 20px 22px">
+          <div style="font:600 21px/1.32 'IBM Plex Sans',sans-serif;color:#FFFDF8;letter-spacing:-.015em;text-wrap:pretty">Which of these is Constantinople's most famous landmark?</div>
+        </div>
+        <div style="flex:1;padding:22px 20px;display:grid;grid-template-columns:1fr 1fr;gap:14px;align-content:start;background:#F2EBDD">
+          <div style="border:1px solid #E4DAC6;border-radius:12px;overflow:hidden;background:#FFFDF8">
+            <div style="height:130px;background:#143138;background-image:repeating-linear-gradient(135deg,rgba(188,200,159,.16) 0 2px,transparent 2px 11px);display:flex;align-items:center;justify-content:center;font:500 10px/1.5 'IBM Plex Mono',monospace;color:#BCC89F;text-align:center">LANDMARK<br>PHOTO 1</div>
+            <div style="padding:10px 12px;font:500 11px/1 'IBM Plex Mono',monospace;color:#5A6663">A</div>
+          </div>
+          <div style="border:3px solid #7C3247;border-radius:12px;overflow:hidden;background:#FFFDF8;position:relative">
+            <div style="height:126px;background:#143138;background-image:repeating-linear-gradient(135deg,rgba(188,200,159,.16) 0 2px,transparent 2px 11px);display:flex;align-items:center;justify-content:center;font:500 10px/1.5 'IBM Plex Mono',monospace;color:#BCC89F;text-align:center">LANDMARK<br>PHOTO 2</div>
+            <div style="padding:9px 12px;font:600 11px/1 'IBM Plex Mono',monospace;color:#7C3247">B · SELECTED</div>
+            <div style="position:absolute;top:8px;right:8px;width:24px;height:24px;border-radius:50%;background:#7C3247;color:#FFFDF8;font:600 12px/24px 'IBM Plex Mono',monospace;text-align:center">✓</div>
+          </div>
+          <div style="border:1px solid #E4DAC6;border-radius:12px;overflow:hidden;background:#FFFDF8">
+            <div style="height:130px;background:#143138;background-image:repeating-linear-gradient(135deg,rgba(188,200,159,.16) 0 2px,transparent 2px 11px);display:flex;align-items:center;justify-content:center;font:500 10px/1.5 'IBM Plex Mono',monospace;color:#BCC89F;text-align:center">LANDMARK<br>PHOTO 3</div>
+            <div style="padding:10px 12px;font:500 11px/1 'IBM Plex Mono',monospace;color:#5A6663">C</div>
+          </div>
+          <div style="border:1px solid #E4DAC6;border-radius:12px;overflow:hidden;background:#FFFDF8">
+            <div style="height:130px;background:#143138;background-image:repeating-linear-gradient(135deg,rgba(188,200,159,.16) 0 2px,transparent 2px 11px);display:flex;align-items:center;justify-content:center;font:500 10px/1.5 'IBM Plex Mono',monospace;color:#BCC89F;text-align:center">LANDMARK<br>PHOTO 4</div>
+            <div style="padding:10px 12px;font:500 11px/1 'IBM Plex Mono',monospace;color:#5A6663">D</div>
+          </div>
+          <div style="grid-column:1/3;font:400 13px/1.5 'IBM Plex Sans',sans-serif;color:#5A6663">Four real landmarks — one of them is this city's. Tap to select, tap again to enlarge.</div>
+        </div>
+        <div style="padding:16px 20px 30px;border-top:1px solid #E4DAC6">
+          <div style="background:#7C3247;border-radius:10px;padding:17px;text-align:center;font:600 16px/1 'IBM Plex Sans',sans-serif;color:#FFFDF8">Lock In B</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 12. SEE alternate authoring pattern -->
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#BCC89F">MARK 4 · SEE — ALTERNATE: IMAGE AS STIMULUS</div>
+      <div style="width:390px;height:844px;background:#FFFDF8;border-radius:22px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 18px 44px rgba(0,0,0,.35)">
+        <div style="background:#1F2B2E;padding:52px 20px 14px;display:flex;align-items:center;justify-content:space-between">
+          <span style="font:600 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#BCC89F">MARK 4 OF 7 · SEE</span>
+          <span style="font:600 15px/1 'IBM Plex Sans',sans-serif;color:#FFFDF8;letter-spacing:-.01em">3,316</span>
+        </div>
+        <div style="background:#1F2B2E;padding:0 20px 18px">
+          <div style="font:600 21px/1.32 'IBM Plex Sans',sans-serif;color:#FFFDF8;letter-spacing:-.015em;text-wrap:pretty">What is this building?</div>
+        </div>
+        <div style="height:300px;background:#143138;position:relative;display:flex;align-items:center;justify-content:center;background-image:repeating-linear-gradient(135deg,rgba(188,200,159,.16) 0 2px,transparent 2px 11px)">
+          <span style="font:500 11px/1.6 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#BCC89F;text-align:center">LANDMARK PHOTOGRAPH<br>1200 × 900</span>
+          <div style="position:absolute;right:14px;bottom:14px;background:rgba(31,43,46,.8);border-radius:6px;padding:7px 10px;font:400 11px/1 'IBM Plex Mono',monospace;color:#F2EBDD">Tap to enlarge</div>
+        </div>
+        <div style="flex:1;padding:20px;display:flex;flex-direction:column;gap:10px">
+          <div style="border:1px solid #E4DAC6;border-radius:12px;padding:16px;display:flex;align-items:center;gap:14px">
+            <span style="width:24px;height:24px;border-radius:50%;border:1px solid #E4DAC6;font:600 11px/24px 'IBM Plex Mono',monospace;text-align:center;color:#5A6663">A</span>
+            <span style="font:400 15px/1.3 'IBM Plex Sans',sans-serif">Hagia Sophia</span>
+          </div>
+          <div style="border:1px solid #E4DAC6;border-radius:12px;padding:16px;display:flex;align-items:center;gap:14px">
+            <span style="width:24px;height:24px;border-radius:50%;border:1px solid #E4DAC6;font:600 11px/24px 'IBM Plex Mono',monospace;text-align:center;color:#5A6663">B</span>
+            <span style="font:400 15px/1.3 'IBM Plex Sans',sans-serif">Süleymaniye Mosque</span>
+          </div>
+          <div style="border:1px solid #E4DAC6;border-radius:12px;padding:16px;display:flex;align-items:center;gap:14px">
+            <span style="width:24px;height:24px;border-radius:50%;border:1px solid #E4DAC6;font:600 11px/24px 'IBM Plex Mono',monospace;text-align:center;color:#5A6663">C</span>
+            <span style="font:400 15px/1.3 'IBM Plex Sans',sans-serif">Basilica of San Vitale</span>
+          </div>
+          <div style="border:1px solid #E4DAC6;border-radius:12px;padding:16px;display:flex;align-items:center;gap:14px">
+            <span style="width:24px;height:24px;border-radius:50%;border:1px solid #E4DAC6;font:600 11px/24px 'IBM Plex Mono',monospace;text-align:center;color:#5A6663">D</span>
+            <span style="font:400 15px/1.3 'IBM Plex Sans',sans-serif">Church of the Holy Sepulchre</span>
+          </div>
+          <div style="font:400 12px/1.5 'IBM Plex Sans',sans-serif;color:#5A6663;margin-top:2px">Used only where the Subject suits it — the default See Mark offers four images as the answers.</div>
+        </div>
+        <div style="padding:16px 20px 30px;border-top:1px solid #E4DAC6">
+          <div style="background:#E4DAC6;border-radius:10px;padding:17px;text-align:center;font:600 16px/1 'IBM Plex Sans',sans-serif;color:#5A6663">Lock In</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 13. ERA -->
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#BCC89F">MARK 5 · ERA — SELECTED</div>
+      <div style="width:390px;height:844px;background:#FFFDF8;border-radius:22px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 18px 44px rgba(0,0,0,.35)">
+        <div style="background:#1F2B2E;padding:52px 20px 14px;display:flex;align-items:center;justify-content:space-between">
+          <span style="font:600 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#BCC89F">MARK 5 OF 7 · ERA</span>
+          <span style="font:600 15px/1 'IBM Plex Sans',sans-serif;color:#FFFDF8;letter-spacing:-.01em">3,316</span>
+        </div>
+        <div style="background:#1F2B2E;padding:0 20px 24px;display:flex;flex-direction:column;gap:10px">
+          <span style="font:600 11px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#3F5E73">THE PERIOD</span>
+          <div style="font:600 21px/1.32 'IBM Plex Sans',sans-serif;color:#FFFDF8;letter-spacing:-.015em;text-wrap:pretty">Which empire held Constantinople as its capital for most of its history?</div>
+        </div>
+        <div style="flex:1;padding:24px 20px;display:flex;flex-direction:column;gap:12px">
+          <div style="border:1px solid #E4DAC6;border-radius:12px;padding:18px;display:flex;align-items:center;gap:14px;opacity:.55">
+            <span style="width:26px;height:26px;border-radius:50%;border:1px solid #E4DAC6;font:600 12px/26px 'IBM Plex Mono',monospace;text-align:center;color:#5A6663">A</span>
+            <span style="font:400 16px/1.3 'IBM Plex Sans',sans-serif">Achaemenid Persia</span>
+          </div>
+          <div style="border:2px solid #7C3247;background:#FFF6F1;border-radius:12px;padding:17px;display:flex;align-items:center;gap:14px">
+            <span style="width:26px;height:26px;border-radius:50%;background:#7C3247;color:#FFFDF8;font:600 12px/26px 'IBM Plex Mono',monospace;text-align:center">B</span>
+            <span style="font:600 16px/1.3 'IBM Plex Sans',sans-serif;color:#7C3247">Byzantine Empire</span>
+          </div>
+          <div style="border:1px solid #E4DAC6;border-radius:12px;padding:18px;display:flex;align-items:center;gap:14px;opacity:.55">
+            <span style="width:26px;height:26px;border-radius:50%;border:1px solid #E4DAC6;font:600 12px/26px 'IBM Plex Mono',monospace;text-align:center;color:#5A6663">C</span>
+            <span style="font:400 16px/1.3 'IBM Plex Sans',sans-serif">Abbasid Caliphate</span>
+          </div>
+          <div style="border:1px solid #E4DAC6;border-radius:12px;padding:18px;display:flex;align-items:center;gap:14px;opacity:.55">
+            <span style="width:26px;height:26px;border-radius:50%;border:1px solid #E4DAC6;font:600 12px/26px 'IBM Plex Mono',monospace;text-align:center;color:#5A6663">D</span>
+            <span style="font:400 16px/1.3 'IBM Plex Sans',sans-serif">Holy Roman Empire</span>
+          </div>
+          <div style="background:#F2EBDD;border-radius:10px;padding:14px 16px;font:400 13px/1.5 'IBM Plex Sans',sans-serif;color:#5A6663;text-wrap:pretty;margin-top:4px">Same multiple choice as Mark 3, asked about the period rather than the identity. The next Mark asks what came after.</div>
+        </div>
+        <div style="padding:18px 20px 30px;border-top:1px solid #E4DAC6">
+          <div style="background:#7C3247;border-radius:10px;padding:17px;text-align:center;font:600 16px/1 'IBM Plex Sans',sans-serif;color:#FFFDF8">Lock In B</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 14. SUCCESSION -->
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#BCC89F">MARK 6 · SUCCESSION — CARRIES ERA FORWARD</div>
+      <div style="width:390px;height:844px;background:#FFFDF8;border-radius:22px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 18px 44px rgba(0,0,0,.35)">
+        <div style="background:#1F2B2E;padding:52px 20px 14px;display:flex;align-items:center;justify-content:space-between">
+          <span style="font:600 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#BCC89F">MARK 6 OF 7 · SUCCESSION</span>
+          <span style="font:600 15px/1 'IBM Plex Sans',sans-serif;color:#FFFDF8;letter-spacing:-.01em">4,520</span>
+        </div>
+        <div style="background:#1F2B2E;padding:0 20px 24px;display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="font:600 11px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#3F5E73;border:1px solid #3F5E73;border-radius:4px;padding:6px 8px">MARK 5: BYZANTINE</span>
+            <span style="font:600 11px/1 'IBM Plex Mono',monospace;color:#5A6663">→</span>
+          </div>
+          <div style="font:600 21px/1.32 'IBM Plex Sans',sans-serif;color:#FFFDF8;letter-spacing:-.015em;text-wrap:pretty">Which empire took the city in 1453 and made it their capital?</div>
+        </div>
+        <div style="flex:1;padding:24px 20px;display:flex;flex-direction:column;gap:12px">
+          <div style="border:1px solid #E4DAC6;border-radius:12px;padding:18px;display:flex;align-items:center;gap:14px" style-hover="border-color:#7C3247">
+            <span style="width:26px;height:26px;border-radius:50%;border:1px solid #E4DAC6;font:600 12px/26px 'IBM Plex Mono',monospace;text-align:center;color:#5A6663">A</span>
+            <span style="font:400 16px/1.3 'IBM Plex Sans',sans-serif">Seljuk Sultanate</span>
+          </div>
+          <div style="border:1px solid #E4DAC6;border-radius:12px;padding:18px;display:flex;align-items:center;gap:14px">
+            <span style="width:26px;height:26px;border-radius:50%;border:1px solid #E4DAC6;font:600 12px/26px 'IBM Plex Mono',monospace;text-align:center;color:#5A6663">B</span>
+            <span style="font:400 16px/1.3 'IBM Plex Sans',sans-serif">Republic of Venice</span>
+          </div>
+          <div style="border:1px solid #E4DAC6;border-radius:12px;padding:18px;display:flex;align-items:center;gap:14px">
+            <span style="width:26px;height:26px;border-radius:50%;border:1px solid #E4DAC6;font:600 12px/26px 'IBM Plex Mono',monospace;text-align:center;color:#5A6663">C</span>
+            <span style="font:400 16px/1.3 'IBM Plex Sans',sans-serif">Ottoman Empire</span>
+          </div>
+          <div style="border:1px solid #E4DAC6;border-radius:12px;padding:18px;display:flex;align-items:center;gap:14px">
+            <span style="width:26px;height:26px;border-radius:50%;border:1px solid #E4DAC6;font:600 12px/26px 'IBM Plex Mono',monospace;text-align:center;color:#5A6663">D</span>
+            <span style="font:400 16px/1.3 'IBM Plex Sans',sans-serif">Safavid Empire</span>
+          </div>
+          <div style="font:400 13px/1.5 'IBM Plex Sans',sans-serif;color:#5A6663;margin-top:4px">Before and after, read as a pair — the era you just named, and what replaced it.</div>
+        </div>
+        <div style="padding:18px 20px 30px;border-top:1px solid #E4DAC6">
+          <div style="background:#E4DAC6;border-radius:10px;padding:17px;text-align:center;font:600 16px/1 'IBM Plex Sans',sans-serif;color:#5A6663">Lock In</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 15. MATCH -->
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#BCC89F">MARK 7 · MATCH — PAIRS PARTLY MADE</div>
+      <div style="width:390px;height:844px;background:#FFFDF8;border-radius:22px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 18px 44px rgba(0,0,0,.35)">
+        <div style="background:#1F2B2E;padding:52px 20px 14px;display:flex;align-items:center;justify-content:space-between">
+          <span style="font:600 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#BCC89F">MARK 7 OF 7 · MATCH</span>
+          <span style="font:600 15px/1 'IBM Plex Sans',sans-serif;color:#FFFDF8;letter-spacing:-.01em">5,652</span>
+        </div>
+        <div style="background:#1F2B2E;padding:0 20px 22px">
+          <div style="font:600 21px/1.32 'IBM Plex Sans',sans-serif;color:#FFFDF8;letter-spacing:-.015em;text-wrap:pretty">Match each ruler to what they did here.</div>
+        </div>
+        <div style="flex:1;padding:24px 20px;display:flex;flex-direction:column;gap:16px;background:#F2EBDD">
+          <div style="display:flex;justify-content:space-between;font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#5A6663">
+            <span>RULER</span><span>DEED</span>
+          </div>
+          <div style="display:flex;gap:12px">
+            <div style="flex:1;display:flex;flex-direction:column;gap:12px">
+              <div style="background:#3F5E73;border-radius:10px;padding:16px 14px;font:600 14px/1.2 'IBM Plex Sans',sans-serif;color:#FFFDF8">Constantine I</div>
+              <div style="background:#3F5E73;border-radius:10px;padding:16px 14px;font:600 14px/1.2 'IBM Plex Sans',sans-serif;color:#FFFDF8">Justinian I</div>
+              <div style="background:#FFFDF8;border:1px solid #E4DAC6;border-radius:10px;padding:16px 14px;font:400 14px/1.2 'IBM Plex Sans',sans-serif">Theodosius II</div>
+              <div style="background:#FFFDF8;border:2px solid #7C3247;border-radius:10px;padding:15px 13px;font:600 14px/1.2 'IBM Plex Sans',sans-serif;color:#7C3247">Mehmed II</div>
+            </div>
+            <div style="width:34px;display:flex;flex-direction:column;padding-top:22px;gap:0">
+              <div style="height:1px;background:#3F5E73"></div>
+              <div style="height:55px"></div>
+              <div style="height:1px;background:#3F5E73"></div>
+              <div style="height:55px"></div>
+              <div style="height:1px;background:#E4DAC6"></div>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:12px">
+              <div style="background:#3F5E73;border-radius:10px;padding:16px 14px;font:600 14px/1.2 'IBM Plex Sans',sans-serif;color:#FFFDF8">Refounded the city, 330</div>
+              <div style="background:#3F5E73;border-radius:10px;padding:16px 14px;font:600 14px/1.2 'IBM Plex Sans',sans-serif;color:#FFFDF8">Built Hagia Sophia, 537</div>
+              <div style="background:#FFFDF8;border:1px solid #E4DAC6;border-radius:10px;padding:16px 14px;font:400 14px/1.2 'IBM Plex Sans',sans-serif">Took the city, 1453</div>
+              <div style="background:#FFFDF8;border:1px solid #E4DAC6;border-radius:10px;padding:16px 14px;font:400 14px/1.2 'IBM Plex Sans',sans-serif">Raised the land walls, 413</div>
+            </div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;background:#FFFDF8;border:1px solid #E4DAC6;border-radius:10px;padding:13px 15px">
+            <span style="font:400 13px/1 'IBM Plex Sans',sans-serif;color:#5A6663">2 of 4 paired</span>
+            <span style="font:500 12px/1 'IBM Plex Mono',monospace;color:#7C3247">Clear pairs</span>
+          </div>
+          <div style="font:400 13px/1.5 'IBM Plex Sans',sans-serif;color:#5A6663;text-wrap:pretty">Partial credit here — each correct pair earns its share, and it recaps the day.</div>
+        </div>
+        <div style="padding:16px 20px 30px;border-top:1px solid #E4DAC6">
+          <div style="background:#E4DAC6;border-radius:10px;padding:17px;text-align:center;font:600 16px/1 'IBM Plex Sans',sans-serif;color:#5A6663">Pair all four to submit</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ STAGE 3 — FEEDBACK ============ -->
+  <div style="display:flex;align-items:center;gap:14px;margin:0 0 22px">
+    <span style="font:600 12px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#F2EBDD">03 — RIGHT AND WRONG</span>
+    <span style="flex:1;height:1px;background:#5A6663"></span>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:40px;margin-bottom:64px">
+
+    <!-- 16. Correct -->
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#BCC89F">AFFIRMATIVE — CORRECT (MARK 5, ERA)</div>
+      <div style="width:390px;height:844px;background:#FFFDF8;border-radius:22px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 18px 44px rgba(0,0,0,.35)">
+        <div style="background:#6B8E4E;padding:52px 24px 30px;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <span style="font:600 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#FFFDF8;opacity:.85">MARK 5 OF 7 · ERA</span>
+            <span style="font:600 15px/1 'IBM Plex Sans',sans-serif;color:#FFFDF8;letter-spacing:-.01em">4,520</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px">
+            <span style="width:38px;height:38px;border-radius:50%;background:#FFFDF8;color:#6B8E4E;font:600 19px/38px 'IBM Plex Mono',monospace;text-align:center">✓</span>
+            <span style="font:600 30px/1.05 'IBM Plex Sans',sans-serif;color:#FFFDF8;letter-spacing:-.02em">Correct</span>
+          </div>
+          <div style="font:400 15px/1.5 'IBM Plex Sans',sans-serif;color:#F2EBDD">Full knowledge credit, and you were quick about it.</div>
+        </div>
+        <div style="flex:1;padding:24px 20px;display:flex;flex-direction:column;gap:16px">
+          <div style="border:2px solid #6B8E4E;background:#F4F6EC;border-radius:12px;padding:16px;display:flex;align-items:center;gap:14px">
+            <span style="width:26px;height:26px;border-radius:50%;background:#6B8E4E;color:#FFFDF8;font:600 12px/26px 'IBM Plex Mono',monospace;text-align:center">B</span>
+            <div style="display:flex;flex-direction:column;gap:3px">
+              <span style="font:600 16px/1.2 'IBM Plex Sans',sans-serif;color:#1F2B2E">Byzantine Empire</span>
+              <span style="font:500 11px/1 'IBM Plex Mono',monospace;color:#6B8E4E">YOUR ANSWER · CORRECT</span>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;justify-content:space-between;font:500 13px/1 'IBM Plex Sans',sans-serif"><span>Knowledge</span><span style="font-family:'IBM Plex Mono',monospace;color:#6B8E4E">100%</span></div>
+            <div style="height:6px;background:#F2EBDD;border-radius:99px;overflow:hidden"><div style="width:100%;height:100%;background:#6B8E4E"></div></div>
+            <div style="display:flex;justify-content:space-between;font:400 13px/1 'IBM Plex Sans',sans-serif;color:#5A6663"><span>Speed bonus · 5.4s</span><span style="font-family:'IBM Plex Mono',monospace;color:#1F2B2E">+204</span></div>
+          </div>
+          <div style="background:#F2EBDD;border-radius:10px;padding:16px;display:flex;justify-content:space-between;align-items:baseline">
+            <span style="font:500 13px/1 'IBM Plex Sans',sans-serif;color:#5A6663">Points this Mark</span>
+            <span style="font:600 27px/1 'IBM Plex Sans',sans-serif;color:#6B8E4E;letter-spacing:-.02em">1,204</span>
+          </div>
+          <div style="font:400 14px/1.6 'IBM Plex Sans',sans-serif;color:#5A6663;text-wrap:pretty">The eastern half of the Roman world outlived the west by nearly a thousand years, ruled from this city and speaking Greek.</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <span style="font:500 11px/1 'IBM Plex Mono',monospace;color:#A9763F;border:1px solid #A9763F;border-radius:99px;padding:7px 10px">+1 BYZANTINE EMPIRE</span>
+          </div>
+          <div style="flex:1"></div>
+          <div style="background:#7C3247;border-radius:10px;padding:17px;text-align:center;font:600 16px/1 'IBM Plex Sans',sans-serif;color:#FFFDF8">Next Mark — Succession</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 17. Incorrect -->
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#BCC89F">NEGATIVE — INCORRECT (MARK 4, SEE)</div>
+      <div style="width:390px;height:844px;background:#FFFDF8;border-radius:22px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 18px 44px rgba(0,0,0,.35)">
+        <div style="background:#A6402C;padding:52px 24px 30px;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <span style="font:600 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#FFFDF8;opacity:.85">MARK 4 OF 7 · SEE</span>
+            <span style="font:600 15px/1 'IBM Plex Sans',sans-serif;color:#FFFDF8;letter-spacing:-.01em">3,316</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px">
+            <span style="width:38px;height:38px;border-radius:50%;background:#FFFDF8;color:#A6402C;font:600 19px/38px 'IBM Plex Mono',monospace;text-align:center">✕</span>
+            <span style="font:600 30px/1.05 'IBM Plex Sans',sans-serif;color:#FFFDF8;letter-spacing:-.02em">Not this time</span>
+          </div>
+          <div style="font:400 15px/1.5 'IBM Plex Sans',sans-serif;color:#F2EBDD">No credit on this Mark — your total stands.</div>
+        </div>
+        <div style="flex:1;padding:24px 20px;display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;gap:12px">
+            <div style="flex:1;border:2px solid #A6402C;border-radius:12px;overflow:hidden">
+              <div style="height:96px;background:#143138;background-image:repeating-linear-gradient(135deg,rgba(188,200,159,.16) 0 2px,transparent 2px 11px);display:flex;align-items:center;justify-content:center;font:500 10px/1.5 'IBM Plex Mono',monospace;color:#BCC89F">PHOTO B</div>
+              <div style="padding:11px 12px;display:flex;flex-direction:column;gap:4px">
+                <span style="font:500 11px/1 'IBM Plex Mono',monospace;color:#A6402C">✕ YOUR PICK</span>
+                <span style="font:500 14px/1.25 'IBM Plex Sans',sans-serif">Süleymaniye Mosque</span>
+              </div>
+            </div>
+            <div style="flex:1;border:2px solid #6B8E4E;border-radius:12px;overflow:hidden;background:#F4F6EC">
+              <div style="height:96px;background:#143138;background-image:repeating-linear-gradient(135deg,rgba(188,200,159,.16) 0 2px,transparent 2px 11px);display:flex;align-items:center;justify-content:center;font:500 10px/1.5 'IBM Plex Mono',monospace;color:#BCC89F">PHOTO A</div>
+              <div style="padding:11px 12px;display:flex;flex-direction:column;gap:4px">
+                <span style="font:500 11px/1 'IBM Plex Mono',monospace;color:#6B8E4E">✓ CORRECT</span>
+                <span style="font:600 14px/1.25 'IBM Plex Sans',sans-serif">Hagia Sophia</span>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:9px">
+            <div style="display:flex;justify-content:space-between;font:500 13px/1 'IBM Plex Sans',sans-serif"><span>Knowledge</span><span style="font-family:'IBM Plex Mono',monospace;color:#A6402C">0%</span></div>
+            <div style="height:6px;background:#F2EBDD;border-radius:99px;overflow:hidden"><div style="width:3%;height:100%;background:#A6402C"></div></div>
+          </div>
+          <div style="background:#F2EBDD;border-radius:10px;padding:16px;display:flex;justify-content:space-between;align-items:baseline">
+            <span style="font:500 13px/1 'IBM Plex Sans',sans-serif;color:#5A6663">Points this Mark</span>
+            <span style="font:600 27px/1 'IBM Plex Sans',sans-serif;color:#A6402C;letter-spacing:-.02em">0</span>
+          </div>
+          <div style="font:400 14px/1.6 'IBM Plex Sans',sans-serif;color:#5A6663;text-wrap:pretty">Both stand in the same city. Hagia Sophia went up nine centuries earlier, under Justinian, and held the largest dome in the world for most of them.</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <span style="font:500 11px/1 'IBM Plex Mono',monospace;color:#3F5E73;border:1px solid #E4DAC6;border-radius:99px;padding:7px 10px">STILL PART OF TODAY'S SUBJECT</span>
+          </div>
+          <div style="flex:1"></div>
+          <div style="background:#7C3247;border-radius:10px;padding:17px;text-align:center;font:600 16px/1 'IBM Plex Sans',sans-serif;color:#FFFDF8">Next Mark — Era</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ STAGE 4 — CONCLUSION ============ -->
+  <div style="display:flex;align-items:center;gap:14px;margin:0 0 22px">
+    <span style="font:600 12px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#F2EBDD">04 — CONCLUSION</span>
+    <span style="flex:1;height:1px;background:#5A6663"></span>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:40px">
+
+    <!-- 18. Results -->
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#BCC89F">GAMEPLAY CONCLUSION</div>
+      <div style="width:390px;height:844px;background:#1F2B2E;border-radius:22px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 18px 44px rgba(0,0,0,.35)">
+        <div style="padding:52px 24px 26px;display:flex;flex-direction:column;gap:8px;align-items:center;text-align:center">
+          <div style="font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#BCC89F">TODAY'S THEME · DAILY 412</div>
+          <div style="font:600 34px/1.1 Spectral,serif;color:#FFFDF8;letter-spacing:-.01em">Constantinople</div>
+          <div style="font:600 60px/1 'IBM Plex Sans',sans-serif;color:#FFFDF8;letter-spacing:-.035em;margin-top:6px">6,470</div>
+          <div style="font:400 14px/1 'IBM Plex Sans',sans-serif;color:#BCC89F">across seven Marks, base plus speed</div>
+        </div>
+        <div style="flex:1;background:#F2EBDD;border-radius:22px 22px 0 0;padding:20px 20px 20px;display:flex;flex-direction:column;gap:10px">
+          <div style="background:#FFFDF8;border:1px solid #A9763F;border-radius:14px;padding:18px;display:flex;align-items:center;gap:16px">
+            <div style="width:48px;height:48px;border-radius:50%;border:2px solid #A9763F;display:flex;align-items:center;justify-content:center;font:600 20px/1 'IBM Plex Sans',sans-serif;color:#A9763F">13</div>
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <span style="font:600 17px/1.2 'IBM Plex Sans',sans-serif;letter-spacing:-.01em">Streak continued</span>
+              <span style="font:400 13px/1.3 'IBM Plex Sans',sans-serif;color:#5A6663">Thirteen days. New subject in 6h 12m.</span>
+            </div>
+          </div>
+          <div style="background:#FFFDF8;border:1px solid #E4DAC6;border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:10px">
+            <div style="font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#5A6663">THE SEVEN MARKS</div>
+            <div style="display:flex;gap:5px">
+              <span style="flex:1;height:30px;border-radius:5px;background:#6B8E4E"></span>
+              <span style="flex:1;height:30px;border-radius:5px;background:#6B8E4E"></span>
+              <span style="flex:1;height:30px;border-radius:5px;background:#6B8E4E"></span>
+              <span style="flex:1;height:30px;border-radius:5px;background:#A6402C"></span>
+              <span style="flex:1;height:30px;border-radius:5px;background:#6B8E4E"></span>
+              <span style="flex:1;height:30px;border-radius:5px;background:#6B8E4E"></span>
+              <span style="flex:1;height:30px;border-radius:5px;background:#A9763F"></span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font:400 10px/1 'IBM Plex Mono',monospace;color:#5A6663">
+              <span>PIN</span><span>WHEN</span><span>KNOW</span><span>SEE</span><span>ERA</span><span>SUCC</span><span>MATCH</span>
+            </div>
+            <div style="font:400 12px/1.4 'IBM Plex Sans',sans-serif;color:#5A6663">Five strong, one missed, three pairs of four.</div>
+          </div>
+          <div style="background:#FFFDF8;border:1px solid #A9763F;border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:6px">
+            <div style="font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#A9763F">DISCOVERIES</div>
+            <div style="font:400 14px/1.5 'IBM Plex Sans',sans-serif">Byzantine Empire · Ottoman Empire · World Capitals</div>
+          </div>
+          <div style="background:#FFFDF8;border:1px solid #E4DAC6;border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:6px">
+            <div style="font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#5A6663">TODAY'S AVERAGE</div>
+            <div style="display:flex;align-items:baseline;gap:10px">
+              <span style="font:600 25px/1 'IBM Plex Sans',sans-serif;letter-spacing:-.02em">5,100</span>
+              <span style="font:500 13px/1 'IBM Plex Sans',sans-serif;color:#6B8E4E">you beat 72% of players</span>
+            </div>
+          </div>
+          <div style="background:#7C3247;border-radius:10px;padding:16px;text-align:center;font:600 16px/1 'IBM Plex Sans',sans-serif;color:#FFFDF8">Share result</div>
+          <div style="border:1px solid #E4DAC6;background:#FFFDF8;border-radius:10px;padding:15px;text-align:center;font:600 15px/1 'IBM Plex Sans',sans-serif;color:#1F2B2E">See answer summary</div>
+          <div style="font:400 12px/1.5 'IBM Plex Sans',sans-serif;color:#5A6663;text-align:center">Sharing names the theme and your score — never the answers.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 19. Answer summary & stats -->
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#BCC89F">ANSWER SUMMARY &amp; STATS</div>
+      <div style="width:390px;height:844px;background:#F2EBDD;border-radius:22px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 18px 44px rgba(0,0,0,.35)">
+        <div style="background:#1F2B2E;padding:52px 20px 20px;display:flex;flex-direction:column;gap:6px">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <span style="font:600 22px/1 'IBM Plex Sans',sans-serif;color:#FFFDF8;letter-spacing:-.02em">Answer summary</span>
+            <span style="font:600 19px/1 'IBM Plex Sans',sans-serif;color:#A9763F;letter-spacing:-.02em">6,470</span>
+          </div>
+          <span style="font:400 13px/1 'IBM Plex Sans',sans-serif;color:#BCC89F">Constantinople · Daily 412 · 4 min 38 s</span>
+        </div>
+        <div style="flex:1;padding:18px 18px 30px;display:flex;flex-direction:column;gap:10px;overflow:hidden">
+          <div style="display:flex;gap:10px">
+            <div style="flex:1;background:#FFFDF8;border:1px solid #E4DAC6;border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:5px">
+              <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#5A6663">PIN MISS</span>
+              <span style="font:600 21px/1 'IBM Plex Sans',sans-serif;letter-spacing:-.015em">34 km</span>
+            </div>
+            <div style="flex:1;background:#FFFDF8;border:1px solid #E4DAC6;border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:5px">
+              <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#5A6663">YEARS OFF</span>
+              <span style="font:600 21px/1 'IBM Plex Sans',sans-serif;letter-spacing:-.015em">4</span>
+            </div>
+            <div style="flex:1;background:#FFFDF8;border:1px solid #E4DAC6;border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:5px">
+              <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#5A6663">SPEED</span>
+              <span style="font:600 21px/1 'IBM Plex Sans',sans-serif;letter-spacing:-.015em">+790</span>
+            </div>
+          </div>
+          <div style="background:#FFFDF8;border:1px solid #E4DAC6;border-radius:12px;overflow:hidden;display:flex;flex-direction:column">
+            <div style="display:flex;align-items:center;gap:12px;padding:13px 14px;border-bottom:1px solid #E4DAC6">
+              <span style="width:22px;height:22px;border-radius:4px;background:#6B8E4E;color:#FFFDF8;font:600 11px/22px 'IBM Plex Mono',monospace;text-align:center">1</span>
+              <div style="flex:1;display:flex;flex-direction:column;gap:2px">
+                <span style="font:500 13px/1.2 'IBM Plex Sans',sans-serif">Where the city stood</span>
+                <span style="font:400 11px/1 'IBM Plex Mono',monospace;color:#5A6663">PIN · 34 km · 97%</span>
+              </div>
+              <span style="font:600 15px/1 'IBM Plex Sans',sans-serif;letter-spacing:-.01em">1,082</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:13px 14px;border-bottom:1px solid #E4DAC6">
+              <span style="width:22px;height:22px;border-radius:4px;background:#6B8E4E;color:#FFFDF8;font:600 11px/22px 'IBM Plex Mono',monospace;text-align:center">2</span>
+              <div style="flex:1;display:flex;flex-direction:column;gap:2px">
+                <span style="font:500 13px/1.2 'IBM Plex Sans',sans-serif">The name change</span>
+                <span style="font:400 11px/1 'IBM Plex Mono',monospace;color:#5A6663">WHEN · 4 years · 96%</span>
+              </div>
+              <span style="font:600 15px/1 'IBM Plex Sans',sans-serif;letter-spacing:-.01em">1,056</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:13px 14px;border-bottom:1px solid #E4DAC6">
+              <span style="width:22px;height:22px;border-radius:4px;background:#6B8E4E;color:#FFFDF8;font:600 11px/22px 'IBM Plex Mono',monospace;text-align:center">3</span>
+              <div style="flex:1;display:flex;flex-direction:column;gap:2px">
+                <span style="font:500 13px/1.2 'IBM Plex Sans',sans-serif">Istanbul today</span>
+                <span style="font:400 11px/1 'IBM Plex Mono',monospace;color:#5A6663">KNOW · correct · 100%</span>
+              </div>
+              <span style="font:600 15px/1 'IBM Plex Sans',sans-serif;letter-spacing:-.01em">1,178</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:13px 14px;border-bottom:1px solid #E4DAC6">
+              <span style="width:22px;height:22px;border-radius:4px;background:#A6402C;color:#FFFDF8;font:600 11px/22px 'IBM Plex Mono',monospace;text-align:center">4</span>
+              <div style="flex:1;display:flex;flex-direction:column;gap:2px">
+                <span style="font:500 13px/1.2 'IBM Plex Sans',sans-serif">Hagia Sophia</span>
+                <span style="font:400 11px/1 'IBM Plex Mono',monospace;color:#A6402C">SEE · missed · 0%</span>
+              </div>
+              <span style="font:600 15px/1 'IBM Plex Sans',sans-serif;color:#A6402C;letter-spacing:-.01em">0</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:13px 14px;border-bottom:1px solid #E4DAC6">
+              <span style="width:22px;height:22px;border-radius:4px;background:#6B8E4E;color:#FFFDF8;font:600 11px/22px 'IBM Plex Mono',monospace;text-align:center">5</span>
+              <div style="flex:1;display:flex;flex-direction:column;gap:2px">
+                <span style="font:500 13px/1.2 'IBM Plex Sans',sans-serif">Byzantine Empire</span>
+                <span style="font:400 11px/1 'IBM Plex Mono',monospace;color:#5A6663">ERA · correct · 100%</span>
+              </div>
+              <span style="font:600 15px/1 'IBM Plex Sans',sans-serif;letter-spacing:-.01em">1,204</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:13px 14px;border-bottom:1px solid #E4DAC6">
+              <span style="width:22px;height:22px;border-radius:4px;background:#6B8E4E;color:#FFFDF8;font:600 11px/22px 'IBM Plex Mono',monospace;text-align:center">6</span>
+              <div style="flex:1;display:flex;flex-direction:column;gap:2px">
+                <span style="font:500 13px/1.2 'IBM Plex Sans',sans-serif">Ottoman Empire, 1453</span>
+                <span style="font:400 11px/1 'IBM Plex Mono',monospace;color:#5A6663">SUCCESSION · correct · 100%</span>
+              </div>
+              <span style="font:600 15px/1 'IBM Plex Sans',sans-serif;letter-spacing:-.01em">1,132</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:13px 14px">
+              <span style="width:22px;height:22px;border-radius:4px;background:#A9763F;color:#FFFDF8;font:600 11px/22px 'IBM Plex Mono',monospace;text-align:center">7</span>
+              <div style="flex:1;display:flex;flex-direction:column;gap:2px">
+                <span style="font:500 13px/1.2 'IBM Plex Sans',sans-serif">Rulers and their deeds</span>
+                <span style="font:400 11px/1 'IBM Plex Mono',monospace;color:#5A6663">MATCH · 3 of 4 pairs · 75%</span>
+              </div>
+              <span style="font:600 15px/1 'IBM Plex Sans',sans-serif;letter-spacing:-.01em">818</span>
+            </div>
+          </div>
+          <div style="background:#FFFDF8;border:1px solid #E4DAC6;border-radius:12px;padding:16px;display:flex;justify-content:space-between;align-items:baseline">
+            <span style="font:500 13px/1 'IBM Plex Sans',sans-serif;color:#5A6663">Total</span>
+            <span style="font:600 27px/1 'IBM Plex Sans',sans-serif;letter-spacing:-.02em">6,470</span>
+          </div>
+          <div style="border:1px solid #7C3247;border-radius:10px;padding:15px;text-align:center;font:600 15px/1 'IBM Plex Sans',sans-serif;color:#7C3247">Back to today</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { landPath: "" };
+  async componentDidMount() {
+    try {
+      const res = await fetch("https://cdn.jsdelivr.net/npm/world-atlas@2/land-110m.json");
+      const topo = await res.json();
+      const { feature } = await import("https://esm.sh/topojson-client@3");
+      const geo = feature(topo, topo.objects.land);
+      this.setState({ landPath: this.toPath(geo) });
+    } catch (e) { /* ocean-only fallback */ }
+  }
+  toPath(geo, W = 720, H = 360) {
+    const ring = r => r.map(([lon, lat], i) =>
+      (i ? "L" : "M") + (((lon + 180) / 360) * W).toFixed(1) + " " + (((90 - lat) / 180) * H).toFixed(1)
+    ).join(" ") + "Z";
+    const feats = geo.features || [geo];
+    let d = "";
+    for (const f of feats) {
+      const g = f.geometry || f;
+      const polys = g.type === "Polygon" ? [g.coordinates] : g.coordinates;
+      for (const poly of polys) for (const r of poly) d += ring(r);
+    }
+    return d;
+  }
+  renderVals() { return { landPath: this.state.landPath }; }
+}
+</script>
+</body>
+</html>

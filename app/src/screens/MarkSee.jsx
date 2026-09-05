@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ActionBar from "../components/ActionBar";
-import { FeedbackBanner, BreakdownPanel } from "../components/Reveal";
+import { FeedbackBanner, BreakdownPanel, FactNote } from "../components/Reveal";
 import { subjectPack } from "../data/subjectPack";
 import { binaryAccuracy, markScore } from "../lib/scoring";
 import { useGameDispatch } from "../state/GameContext";
@@ -9,7 +9,7 @@ const LETTERS = ["A", "B", "C", "D"];
 
 export default function MarkSee({ session }) {
   const dispatch = useGameDispatch();
-  const { prompt, options, correctIndex, blurb } = subjectPack.see;
+  const { prompt, options, correctIndex, fact, commentary } = subjectPack.see;
   const [selected, setSelected] = useState(null);
   const answer = session.answers.see;
   const isReveal = session.phase === "reveal";
@@ -55,7 +55,7 @@ export default function MarkSee({ session }) {
                 </div>
               </div>
             </div>
-            <p className="pm-when-hint">{blurb}</p>
+            <FactNote fact={fact} />
           </div>
           <BreakdownPanel
             accuracyLabel="Knowledge"
@@ -70,7 +70,11 @@ export default function MarkSee({ session }) {
           />
         </div>
         <div className="pm-reveal-banner-wrap">
-          <FeedbackBanner headline={positive ? "Correct" : "Not this time"} subline={positive ? "Full knowledge credit." : "No credit on this Mark — your total stands."} positive={positive} />
+          <FeedbackBanner
+            headline={positive ? "Correct" : "Not this time"}
+            subline={commentary[positive ? "positive" : "negative"]}
+            positive={positive}
+          />
         </div>
       </div>
     );

@@ -17,6 +17,15 @@
   --tint-oxblood: #FFF6F1;
   --tint-green: #F4F6EC;
 
+  /* Match-pair identity colors: each links one left item, its connector
+     line and its right item in the Match mark — no other use. */
+  --match-1: #4A5A8A;
+  --match-2: #8A6A2E;
+  --match-3: #6B4364;
+  --match-4: #2F6B5C;
+  --match-5: #79553E;
+  --match-6: #4F6B3A;
+
   --font-serif: 'Spectral', Georgia, serif;
   --font-sans: 'IBM Plex Sans', system-ui, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, monospace;

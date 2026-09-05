@@ -3,7 +3,7 @@ import { GameMap } from "../components/map/GameMap";
 import { MapPin } from "../components/map/MapPin";
 import { DistanceLine } from "../components/map/DistanceLine";
 import ActionBar from "../components/ActionBar";
-import { FeedbackBanner, BreakdownPanel } from "../components/Reveal";
+import { FeedbackBanner, BreakdownPanel, FactNote } from "../components/Reveal";
 import { subjectPack } from "../data/subjectPack";
 import { pinAccuracy, markScore } from "../lib/scoring";
 import { useGameDispatch } from "../state/GameContext";
@@ -41,25 +41,28 @@ export default function MarkPin({ session }) {
     return (
       <div className="pm-mark-screen">
         <div className="pm-reveal-split">
-          <div className="pm-reveal-visual pm-reveal-visual--map">
-            <GameMap interactive={false} initialCenter={[subjectPack.pin.trueLocation.lon, subjectPack.pin.trueLocation.lat]} initialZoom={5}>
-              {(map) => (
-                <>
-                  <MapPin map={map} variant="guess" coordinates={placed} />
-                  <MapPin
-                    map={map}
-                    variant="correct"
-                    coordinates={{ lat: subjectPack.pin.trueLocation.lat, lng: subjectPack.pin.trueLocation.lon }}
-                  />
-                  <DistanceLine
-                    map={map}
-                    from={placed}
-                    to={{ lat: subjectPack.pin.trueLocation.lat, lng: subjectPack.pin.trueLocation.lon }}
-                  />
-                </>
-              )}
-            </GameMap>
-            <span className="pm-map-chip">MISS {answer.distanceKm} km</span>
+          <div className="pm-reveal-visual">
+            <div className="pm-reveal-map-box">
+              <GameMap interactive={false} initialCenter={[subjectPack.pin.trueLocation.lon, subjectPack.pin.trueLocation.lat]} initialZoom={5}>
+                {(map) => (
+                  <>
+                    <MapPin map={map} variant="guess" coordinates={placed} />
+                    <MapPin
+                      map={map}
+                      variant="correct"
+                      coordinates={{ lat: subjectPack.pin.trueLocation.lat, lng: subjectPack.pin.trueLocation.lon }}
+                    />
+                    <DistanceLine
+                      map={map}
+                      from={placed}
+                      to={{ lat: subjectPack.pin.trueLocation.lat, lng: subjectPack.pin.trueLocation.lon }}
+                    />
+                  </>
+                )}
+              </GameMap>
+              <span className="pm-map-chip">MISS {answer.distanceKm} km</span>
+            </div>
+            <FactNote fact={subjectPack.pin.fact} />
           </div>
           <BreakdownPanel
             accuracyLabel="Location accuracy"
@@ -74,7 +77,11 @@ export default function MarkPin({ session }) {
           />
         </div>
         <div className="pm-reveal-banner-wrap">
-          <FeedbackBanner headline={headlineFor(answer.accuracy)} subline={subjectPack.pin.blurb} positive={positive} />
+          <FeedbackBanner
+            headline={headlineFor(answer.accuracy)}
+            subline={subjectPack.pin.commentary[positive ? "positive" : "negative"]}
+            positive={positive}
+          />
         </div>
       </div>
     );

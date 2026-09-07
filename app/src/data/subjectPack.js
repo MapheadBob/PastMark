@@ -117,12 +117,15 @@ export const subjectPack = {
 
 export const marksOrder = ["pin", "when", "know", "see", "era", "succession", "match"];
 
+// `tag` is the short code shown inside a filled category pill (Design
+// Standard §Category color tokens); `label` is the longer caption used
+// under progress-rail bars and similar structural spots.
 export const markMeta = {
-  pin: { label: "PIN", title: "Pin", kicker: "MARK 1 · PLACE" },
-  when: { label: "WHEN", title: "When", kicker: "MARK 2 · TIME" },
-  know: { label: "KNOW", title: "Know", kicker: "IDENTITY · ALL OR NOTHING" },
-  see: { label: "SEE", title: "See", kicker: "FOUR REAL LANDMARKS — ONE IS THIS CITY'S" },
-  era: { label: "ERA", title: "Era", kicker: "THE PERIOD · ALL OR NOTHING" },
-  succession: { label: "SUCCESSION", title: "Succession", kicker: "WHAT CAME NEXT · ALL OR NOTHING" },
-  match: { label: "MATCH", title: "Match", kicker: "PARTIAL CREDIT — EACH CORRECT PAIR EARNS ITS SHARE" },
+  pin: { label: "PIN", tag: "PIN", title: "Pin", kicker: "MARK 1 · PLACE" },
+  when: { label: "WHEN", tag: "WHEN", title: "When", kicker: "MARK 2 · TIME" },
+  know: { label: "KNOW", tag: "KNOW", title: "Know", kicker: "IDENTITY · ALL OR NOTHING" },
+  see: { label: "SEE", tag: "SEE", title: "See", kicker: "FOUR REAL LANDMARKS — ONE IS THIS CITY'S" },
+  era: { label: "ERA", tag: "ERA", title: "Era", kicker: "THE PERIOD · ALL OR NOTHING" },
+  succession: { label: "SUCCESSION", tag: "SUCC.", title: "Succession", kicker: "WHAT CAME NEXT · ALL OR NOTHING" },
+  match: { label: "MATCH", tag: "MATCH", title: "Match", kicker: "PARTIAL CREDIT — EACH CORRECT PAIR EARNS ITS SHARE" },
 };

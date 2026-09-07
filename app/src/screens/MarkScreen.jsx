@@ -18,7 +18,6 @@ export default function MarkScreen() {
         markIndex={session.markIndex}
         phase={session.phase}
         runningTotal={session.runningTotal}
-        answers={session.answers}
         markStartedAt={session.markStartedAt}
       />
       {markKey === "pin" && <MarkPin session={session} />}
@@ -55,11 +54,11 @@ export default function MarkScreen() {
           contextBanner={
             session.answers.era ? (
               <div className="pm-succession-banner">
-                <span className="pm-mono-label pm-succession-banner__chip">
+                <span className="pm-eyebrow pm-succession-banner__chip">
                   MARK 5 · {subjectPack.era.options[session.answers.era.selectedIndex].toUpperCase()}
                 </span>
-                <span className="pm-mono-label pm-succession-banner__arrow">→</span>
-                <span className="pm-mono-label pm-succession-banner__chip pm-succession-banner__chip--next">
+                <span className="pm-eyebrow pm-succession-banner__arrow">→</span>
+                <span className="pm-eyebrow pm-succession-banner__chip pm-succession-banner__chip--next">
                   MARK 6 · WHAT CAME NEXT
                 </span>
               </div>

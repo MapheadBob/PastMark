@@ -1,20 +1,24 @@
 :root {
+  /* Ink & ground — PastMark Design Standard */
   --ink: #1F2B2E;
   --deep-ink: #143138;
   --paper: #F2EBDD;
   --card: #FFFDF8;
+  --table-tint: #FCF8F1;
   --rule: #E4DAC6;
   --muted-ink: #5A6663;
-  --muted-paper: #BCC89F;
+  --meta-dark: #8C978F;
 
-  --oxblood: #7C3247;
-  --oxblood-hover: #6A2A3C;
+  /* Semantic — one job each */
+  --gold: #A9763F;
+  --gold-hover: #96682F;
+  --sienna: #C1652F;
+  --maroon: #7C3247;
   --indigo: #3F5E73;
   --green: #6B8E4E;
-  --bronze: #A9763F;
   --rust: #A6402C;
 
-  --tint-oxblood: #FFF6F1;
+  --tint-sienna: #FDF0E8;
   --tint-green: #F4F6EC;
 
   /* Match-pair identity colors: each links one left item, its connector
@@ -26,12 +30,12 @@
   --match-5: #79553E;
   --match-6: #4F6B3A;
 
-  --font-serif: 'Spectral', Georgia, serif;
+  /* Single typeface — no serif, no mono (see Design Standard §Type & scale) */
   --font-sans: 'IBM Plex Sans', system-ui, sans-serif;
-  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
 
   --radius-card: 14px;
   --radius-option: 12px;
+  --radius-option-desktop: 9px;
   --radius-button: 10px;
   --radius-chip: 6px;
   --radius-pill: 999px;
@@ -75,9 +79,11 @@ button {
   flex-direction: column;
 }
 
-.pm-mono-label {
-  font-family: var(--font-mono);
-  font-weight: 600;
+/* Eyebrow / structural label — 11px, +.14em tracking, uppercase, sans
+   (Design Standard §Type & scale). Formerly mono; the standard drops mono
+   entirely, so this is plain sans set small and wide instead. */
+.pm-eyebrow {
+  font: 600 11px/1 var(--font-sans);
   letter-spacing: .14em;
   text-transform: uppercase;
 }
@@ -87,20 +93,22 @@ button {
   border-radius: var(--radius-button);
   padding: 17px;
   font: 600 16px/1 var(--font-sans);
-  background: var(--oxblood);
-  color: var(--card);
+  background: var(--gold);
+  color: var(--ink);
   transition: background .15s ease;
 }
-.pm-btn:hover:not(:disabled) { background: var(--oxblood-hover); }
+.pm-btn:hover:not(:disabled) { background: var(--gold-hover); }
 .pm-btn:disabled {
   background: var(--rule);
   color: var(--muted-ink);
   cursor: not-allowed;
 }
+/* Navigation CTA — leaving/sharing results only (Back to today, Share). */
 .pm-btn--ghost {
   background: transparent;
-  border: 1px solid var(--oxblood);
-  color: var(--oxblood);
+  border: 1px solid var(--sienna);
+  color: var(--sienna);
+  border-radius: var(--radius-pill);
 }
 .pm-btn--dark {
   background: var(--ink);
@@ -148,6 +156,6 @@ button {
 }
 .pm-reset-demo:hover {
   opacity: 1;
-  color: var(--oxblood);
-  border-color: var(--oxblood);
+  color: var(--sienna);
+  border-color: var(--sienna);
 }

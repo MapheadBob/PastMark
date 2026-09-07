@@ -14,11 +14,11 @@ export default function Collections() {
         <div className="pm-collections__grid">
           {Object.entries(profile.collections).map(([name, { discovered, total }]) => (
             <div key={name} className="pm-card pm-collections__card">
-              <span className="pm-mono-label">{name.toUpperCase()}</span>
+              <span className="pm-eyebrow">{name.toUpperCase()}</span>
               <div className="pm-collection-row__track" style={{ marginTop: 8 }}>
                 <div className="pm-collection-row__fill" style={{ width: `${(discovered / total) * 100}%` }} />
               </div>
-              <span className="pm-mono-label" style={{ letterSpacing: 0 }}>{discovered} / {total} discovered</span>
+              <span className="pm-eyebrow" style={{ letterSpacing: 0 }}>{discovered} / {total} discovered</span>
             </div>
           ))}
         </div>

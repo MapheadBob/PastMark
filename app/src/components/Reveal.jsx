@@ -6,7 +6,7 @@ export function FactNote({ fact }) {
   if (!fact) return null;
   return (
     <div className="pm-fact-note">
-      <span className="pm-mono-label pm-fact-note__kicker">The record</span>
+      <span className="pm-eyebrow pm-fact-note__kicker">The record</span>
       <p className="pm-fact-note__body">{fact}</p>
     </div>
   );
@@ -47,7 +47,7 @@ export function AccuracyRow({ label, accuracy, positive }) {
 export function BreakdownPanel({ accuracyLabel, accuracy, basePoints, bonus, seconds, total, positive, nextLabel, onNext, discoveryTag, extraTag }) {
   return (
     <div className="pm-breakdown pm-card">
-      <span className="pm-mono-label pm-breakdown__title">BREAKDOWN</span>
+      <span className="pm-eyebrow pm-breakdown__title">BREAKDOWN</span>
       <AccuracyRow label={accuracyLabel} accuracy={accuracy} positive={positive} />
       <div className="pm-breakdown__line">
         <span>Base points</span>
@@ -64,7 +64,7 @@ export function BreakdownPanel({ accuracyLabel, accuracy, basePoints, bonus, sec
       </div>
       {(discoveryTag || extraTag) && (
         <div className="pm-breakdown__tags">
-          {discoveryTag && <span className="pm-tag pm-tag--bronze">+1 DISCOVERY · {discoveryTag.toUpperCase()}</span>}
+          {discoveryTag && <span className="pm-tag pm-tag--gold">+1 DISCOVERY · {discoveryTag.toUpperCase()}</span>}
           {extraTag && <span className="pm-tag">{extraTag}</span>}
         </div>
       )}

@@ -1,5 +1,6 @@
 import { markMeta } from "../data/subjectPack";
 import { tierToColor } from "../components/ResultSquares";
+import { markColor } from "../lib/markColors";
 import { useGameDispatch, useGameState } from "../state/GameContext";
 
 export default function Results() {
@@ -11,16 +12,16 @@ export default function Results() {
     return null;
   }
 
-  const squareEmoji = { green: "🟩", rust: "🟥", bronze: "🟨" };
+  const squareEmoji = { green: "🟩", rust: "🟥" };
   const sharePreview = result.marks
-    .map((m) => squareEmoji[tierToColor(m.accuracy, m.key === "match")])
+    .map((m) => squareEmoji[tierToColor(m.accuracy)])
     .join("");
 
   return (
     <div className="pm-app pm-results">
       <div className="pm-results__top">
         <div className="pm-results__top-left">
-          <span className="pm-mono-label">
+          <span className="pm-eyebrow">
             TODAY'S THEME · DAILY {result.dailyNumber} · {Math.floor(result.durationSeconds / 60)} MIN {result.durationSeconds % 60} S
           </span>
           <div className="pm-results__theme">{result.theme}</div>
@@ -41,13 +42,16 @@ export default function Results() {
       <div className="pm-results__body">
         <div className="pm-results__main">
           <div className="pm-card pm-results__marks-card">
-            <span className="pm-mono-label">THE SEVEN MARKS</span>
+            <span className="pm-eyebrow">THE SEVEN MARKS</span>
+            {/* Category-colored, like the header's mark-progress rail — this
+                recap shows which mark was which, not how well it went (that
+                lives in the per-mark accuracy in the table below). */}
             <div className="pm-results__marks-row">
               {result.marks.map((m) => (
                 <span
                   key={m.key}
                   className="pm-results__mark-block"
-                  style={{ background: `var(--${tierToColor(m.accuracy, m.key === "match")})` }}
+                  style={{ background: markColor(m.key).bg }}
                 />
               ))}
             </div>
@@ -59,13 +63,13 @@ export default function Results() {
           </div>
           <div className="pm-results__stats-row">
             <div className="pm-card pm-side-card">
-              <span className="pm-mono-label">TODAY'S AVERAGE</span>
+              <span className="pm-eyebrow">TODAY'S AVERAGE</span>
               <span className="pm-results__stat-num">{result.averageScore.toLocaleString()}</span>
               <span style={{ color: "var(--green)" }}>you beat {result.beatPercent}% of players</span>
             </div>
-            <div className="pm-card pm-side-card pm-side-card--bronze">
-              <span className="pm-mono-label" style={{ color: "var(--bronze)" }}>COLLECTIONS ADVANCED</span>
-              <span className="pm-results__stat-num" style={{ color: "var(--bronze)" }}>{result.collectionsAdvanced.length}</span>
+            <div className="pm-card pm-side-card pm-side-card--gold">
+              <span className="pm-eyebrow" style={{ color: "var(--gold)" }}>COLLECTIONS ADVANCED</span>
+              <span className="pm-results__stat-num" style={{ color: "var(--gold)" }}>{result.collectionsAdvanced.length}</span>
               <span>{result.collectionsAdvanced.join(", ") || "None this time"}</span>
             </div>
           </div>
@@ -76,8 +80,8 @@ export default function Results() {
             See answer summary
           </button>
           <div className="pm-card pm-side-card">
-            <span className="pm-mono-label">SHARE PREVIEW</span>
-            <span className="pm-mono-label" style={{ letterSpacing: 0, textTransform: "none" }}>
+            <span className="pm-eyebrow">SHARE PREVIEW</span>
+            <span className="pm-eyebrow" style={{ letterSpacing: 0, textTransform: "none" }}>
               PastMark {result.dailyNumber} — {result.theme}
               <br />
               {result.totalScore.toLocaleString()}

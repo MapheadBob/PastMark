@@ -1,5 +1,6 @@
 import { markMeta } from "../data/subjectPack";
-import { tierToColor } from "../components/ResultSquares";
+import { accuracyVar } from "../lib/markColors";
+import MarkTag from "../components/MarkTag";
 import { useGameDispatch, useGameState } from "../state/GameContext";
 
 const WHAT_IT_ASKED = {
@@ -33,7 +34,7 @@ export default function AnswerSummary() {
       <div className="pm-summary__top">
         <div>
           <div className="pm-summary__title">Answer summary</div>
-          <span className="pm-mono-label" style={{ letterSpacing: 0, textTransform: "none" }}>
+          <span className="pm-eyebrow" style={{ letterSpacing: 0, textTransform: "none" }}>
             {result.theme} · Daily {result.dailyNumber} · {Math.floor(result.durationSeconds / 60)} min {result.durationSeconds % 60} s
           </span>
         </div>
@@ -43,24 +44,24 @@ export default function AnswerSummary() {
       <div className="pm-summary__body">
         <div className="pm-summary__stats">
           <div className="pm-card pm-side-card">
-            <span className="pm-mono-label">PIN MISS</span>
+            <span className="pm-eyebrow">PIN MISS</span>
             <span className="pm-results__stat-num">{result.marks[0]?.distanceKm ?? "—"} km</span>
           </div>
           <div className="pm-card pm-side-card">
-            <span className="pm-mono-label">YEARS OFF · WHEN</span>
+            <span className="pm-eyebrow">YEARS OFF · WHEN</span>
             <span className="pm-results__stat-num">{result.marks[1]?.yearsOff ?? "—"} years</span>
           </div>
           <div className="pm-card pm-side-card">
-            <span className="pm-mono-label">SPEED BONUS EARNED</span>
+            <span className="pm-eyebrow">SPEED BONUS EARNED</span>
             <span className="pm-results__stat-num">+{result.speedTotal.toLocaleString()}</span>
           </div>
           <div className="pm-card pm-side-card">
-            <span className="pm-mono-label">ACCURACY BY MARK</span>
+            <span className="pm-eyebrow">ACCURACY BY MARK</span>
             <div className="pm-summary__accuracy-list">
               {result.marks.map((m) => (
                 <div key={m.key} className="pm-summary__accuracy-row">
                   <span>{markMeta[m.key].title}</span>
-                  <span style={{ color: `var(--${tierToColor(m.accuracy, m.key === "match")})` }}>{m.accuracy}%</span>
+                  <span style={{ color: accuracyVar(m.accuracy) }}>{m.accuracy}%</span>
                 </div>
               ))}
             </div>
@@ -80,15 +81,10 @@ export default function AnswerSummary() {
           </div>
           {result.marks.map((m, idx) => (
             <div key={m.key} className="pm-summary__table-row">
-              <span
-                className="pm-summary__table-index"
-                style={{ background: `var(--${tierToColor(m.accuracy, m.key === "match")})` }}
-              >
-                {idx + 1}
-              </span>
+              <span className="pm-summary__table-index">{idx + 1}</span>
               <span>{WHAT_IT_ASKED[m.key]}</span>
-              <span className="pm-mono-label" style={{ letterSpacing: 0 }}>{markMeta[m.key].label}</span>
-              <span style={{ color: `var(--${tierToColor(m.accuracy, m.key === "match")})` }}>{accuracyLine(m)}</span>
+              <MarkTag markKey={m.key} />
+              <span style={{ color: accuracyVar(m.accuracy) }}>{accuracyLine(m)}</span>
               <span style={{ textAlign: "right", fontWeight: 600 }}>{m.total.toLocaleString()}</span>
             </div>
           ))}

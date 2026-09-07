@@ -104,7 +104,7 @@ export default function MarkWhen({ session }) {
               <div className="pm-timeline-recap__track" />
               <div className="pm-timeline-recap__fill" style={{ left: `${fillLeft}%`, width: `${fillWidth}%` }} />
               <div className="pm-timeline-recap__marker pm-timeline-recap__marker--ghost" style={{ left: `${guessPct}%` }}>
-                <span className="pm-mono-label">YOUR GUESS · {year}</span>
+                <span className="pm-eyebrow">YOUR GUESS · {year}</span>
                 <span className="pm-timeline-recap__dot pm-timeline-recap__dot--ghost" />
               </div>
               <div
@@ -115,14 +115,14 @@ export default function MarkWhen({ session }) {
                 style={{ left: `${truePct}%` }}
               >
                 <span className="pm-timeline-recap__dot" />
-                <span className="pm-mono-label">ACTUAL · {trueYear}</span>
+                <span className="pm-eyebrow">ACTUAL · {trueYear}</span>
               </div>
               <div className="pm-timeline-recap__traveler" style={{ left: `${dotPct}%` }} aria-hidden="true">
                 <span className="pm-timeline-recap__traveler-year">{displayYear}</span>
                 <span className="pm-timeline-recap__traveler-dot" />
               </div>
-              <span className="pm-mono-label pm-timeline-recap__bound pm-timeline-recap__bound--min">{min}</span>
-              <span className="pm-mono-label pm-timeline-recap__bound pm-timeline-recap__bound--max">{max}</span>
+              <span className="pm-eyebrow pm-timeline-recap__bound pm-timeline-recap__bound--min">{min}</span>
+              <span className="pm-eyebrow pm-timeline-recap__bound pm-timeline-recap__bound--max">{max}</span>
             </div>
             {laterDirection && (
               <p className={"pm-timeline-recap__delta" + (arrived ? " pm-timeline-recap__delta--in" : "")}>
@@ -157,12 +157,12 @@ export default function MarkWhen({ session }) {
   return (
     <div className="pm-mark-screen">
       <div className="pm-mark-prompt-band">
-        <span className="pm-mono-label pm-mark-prompt-band__kicker">MARK 2 · TIME</span>
+        <span className="pm-eyebrow pm-mark-prompt-band__kicker">MARK 2 · TIME</span>
         <h2 className="pm-mark-prompt-band__prompt">{prompt}</h2>
       </div>
       <div className="pm-when-content">
         <div className="pm-when-answer">
-          <span className="pm-mono-label">YOUR ANSWER</span>
+          <span className="pm-eyebrow">YOUR ANSWER</span>
           <span className="pm-when-answer__year">{year}</span>
         </div>
         <div
@@ -200,7 +200,7 @@ export default function MarkWhen({ session }) {
         </div>
         <div className="pm-when-tags">
           {tags.map((tag) => (
-            <span key={tag} className="pm-mono-label pm-tag">
+            <span key={tag} className="pm-eyebrow pm-tag">
               {tag}
             </span>
           ))}

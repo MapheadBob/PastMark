@@ -1,3 +1,17 @@
+// IA: the reveal's two text slots. `fact` is fixed history about the subject
+// and always renders here, under the answer. `commentary` (passed as
+// `subline` to FeedbackBanner) is a remark on the player's performance and
+// always renders in the banner. The two must never carry the same string.
+export function FactNote({ fact }) {
+  if (!fact) return null;
+  return (
+    <div className="pm-fact-note">
+      <span className="pm-mono-label pm-fact-note__kicker">The record</span>
+      <p className="pm-fact-note__body">{fact}</p>
+    </div>
+  );
+}
+
 export function FeedbackBanner({ headline, subline, positive }) {
   return (
     <div className={"pm-feedback-banner " + (positive ? "pm-feedback-banner--pos" : "pm-feedback-banner--neg")}>

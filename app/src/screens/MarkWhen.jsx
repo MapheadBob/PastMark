@@ -1,9 +1,15 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ActionBar from "../components/ActionBar";
-import { FeedbackBanner, BreakdownPanel } from "../components/Reveal";
+import { FeedbackBanner, BreakdownPanel, FactNote } from "../components/Reveal";
 import { subjectPack } from "../data/subjectPack";
 import { whenAccuracy, markScore } from "../lib/scoring";
 import { useGameDispatch } from "../state/GameContext";
+
+const REVEAL_DURATION_MS = 1400;
+
+function easeInOutCubic(t) {
+  return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+}
 
 function headlineFor(yearsOff) {
   if (yearsOff === 0) return "Exactly right";
@@ -12,15 +18,63 @@ function headlineFor(yearsOff) {
   return "Off by a wide margin";
 }
 
+// Animates the reveal's traveling marker + year ticker from the player's
+// guess to the true year. Runs once per reveal; respects reduced-motion.
+function useYearTravel({ from, to, active }) {
+  const [displayYear, setDisplayYear] = useState(from);
+  const [progress, setProgress] = useState(0);
+  const hasRunRef = useRef(false);
+
+  useEffect(() => {
+    if (!active || hasRunRef.current) return;
+    hasRunRef.current = true;
+
+    const prefersReduced =
+      typeof window !== "undefined" &&
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (prefersReduced || from === to) {
+      setDisplayYear(to);
+      setProgress(1);
+      return;
+    }
+
+    let raf;
+    const start = performance.now();
+    const tick = (now) => {
+      const t = Math.min(1, (now - start) / REVEAL_DURATION_MS);
+      const eased = easeInOutCubic(t);
+      setProgress(eased);
+      setDisplayYear(Math.round(from + (to - from) * eased));
+      if (t < 1) {
+        raf = requestAnimationFrame(tick);
+      } else {
+        setDisplayYear(to);
+      }
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [active, from, to]);
+
+  return { displayYear, progress, arrived: progress >= 1 };
+}
+
 export default function MarkWhen({ session }) {
   const dispatch = useGameDispatch();
-  const { min, max, trueYear, tags, prompt, blurb } = subjectPack.when;
+  const { min, max, trueYear, tags, prompt, fact, commentary } = subjectPack.when;
   const [year, setYear] = useState(Math.round((min + max) / 2));
   const answer = session.answers.when;
   const isReveal = session.phase === "reveal";
   const trackRef = useRef(null);
 
   const percent = ((year - min) / (max - min)) * 100;
+
+  const { displayYear, progress, arrived } = useYearTravel({
+    from: year,
+    to: trueYear,
+    active: isReveal && !!answer,
+  });
 
   const handleLockIn = () => {
     const seconds = Math.round(((Date.now() - session.markStartedAt) / 1000) * 10) / 10;
@@ -35,25 +89,47 @@ export default function MarkWhen({ session }) {
 
   if (isReveal && answer) {
     const positive = answer.accuracy >= 60;
-    const yourPct = ((year - min) / (max - min)) * 100;
-    const truePct = ((trueYear - min) / (max - min)) * 100;
+    const pctFor = (y) => ((y - min) / (max - min)) * 100;
+    const guessPct = pctFor(year);
+    const truePct = pctFor(trueYear);
+    const dotPct = pctFor(displayYear);
+    const fillLeft = Math.min(guessPct, dotPct);
+    const fillWidth = Math.abs(dotPct - guessPct);
+    const laterDirection = trueYear > year ? "later" : trueYear < year ? "earlier" : null;
     return (
       <div className="pm-mark-screen">
         <div className="pm-reveal-split">
           <div className="pm-reveal-visual pm-reveal-visual--timeline">
             <div className="pm-timeline-recap">
               <div className="pm-timeline-recap__track" />
-              <div className="pm-timeline-recap__marker pm-timeline-recap__marker--you" style={{ left: `${yourPct}%` }}>
-                <span className="pm-mono-label">YOU · {year}</span>
-                <span className="pm-timeline-recap__dot" />
+              <div className="pm-timeline-recap__fill" style={{ left: `${fillLeft}%`, width: `${fillWidth}%` }} />
+              <div className="pm-timeline-recap__marker pm-timeline-recap__marker--ghost" style={{ left: `${guessPct}%` }}>
+                <span className="pm-mono-label">YOUR GUESS · {year}</span>
+                <span className="pm-timeline-recap__dot pm-timeline-recap__dot--ghost" />
               </div>
-              <div className="pm-timeline-recap__marker pm-timeline-recap__marker--true" style={{ left: `${truePct}%` }}>
+              <div
+                className={
+                  "pm-timeline-recap__marker pm-timeline-recap__marker--true" +
+                  (arrived ? " pm-timeline-recap__marker--arrived" : "")
+                }
+                style={{ left: `${truePct}%` }}
+              >
                 <span className="pm-timeline-recap__dot" />
                 <span className="pm-mono-label">ACTUAL · {trueYear}</span>
               </div>
-              <span className="pm-timeline-recap__bound pm-timeline-recap__bound--min">{min}</span>
-              <span className="pm-timeline-recap__bound pm-timeline-recap__bound--max">{max}</span>
+              <div className="pm-timeline-recap__traveler" style={{ left: `${dotPct}%` }} aria-hidden="true">
+                <span className="pm-timeline-recap__traveler-year">{displayYear}</span>
+                <span className="pm-timeline-recap__traveler-dot" />
+              </div>
+              <span className="pm-mono-label pm-timeline-recap__bound pm-timeline-recap__bound--min">{min}</span>
+              <span className="pm-mono-label pm-timeline-recap__bound pm-timeline-recap__bound--max">{max}</span>
             </div>
+            {laterDirection && (
+              <p className={"pm-timeline-recap__delta" + (arrived ? " pm-timeline-recap__delta--in" : "")}>
+                {answer.yearsOff} year{answer.yearsOff === 1 ? "" : "s"} {laterDirection}
+              </p>
+            )}
+            <FactNote fact={fact} />
           </div>
           <BreakdownPanel
             accuracyLabel="Time accuracy"
@@ -68,7 +144,11 @@ export default function MarkWhen({ session }) {
           />
         </div>
         <div className="pm-reveal-banner-wrap">
-          <FeedbackBanner headline={headlineFor(answer.yearsOff)} subline={blurb} positive={positive} />
+          <FeedbackBanner
+            headline={headlineFor(answer.yearsOff)}
+            subline={commentary[positive ? "positive" : "negative"]}
+            positive={positive}
+          />
         </div>
       </div>
     );

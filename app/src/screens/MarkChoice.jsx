@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import OptionCard from "../components/OptionCard";
 import ActionBar from "../components/ActionBar";
-import { FeedbackBanner, BreakdownPanel } from "../components/Reveal";
+import { FeedbackBanner, BreakdownPanel, FactNote } from "../components/Reveal";
 import { binaryAccuracy, markScore } from "../lib/scoring";
 import { useGameDispatch } from "../state/GameContext";
 
@@ -73,7 +73,7 @@ export default function MarkChoice({ session, markKey, data, kicker, markNumber,
                 </div>
               </div>
             )}
-            <p className="pm-when-hint">{data.blurb}</p>
+            <FactNote fact={data.fact} />
           </div>
           <BreakdownPanel
             accuracyLabel="Knowledge"
@@ -89,7 +89,11 @@ export default function MarkChoice({ session, markKey, data, kicker, markNumber,
           />
         </div>
         <div className="pm-reveal-banner-wrap">
-          <FeedbackBanner headline={positive ? "Correct" : "Not this time"} subline={positive ? "Full knowledge credit, and you were quick about it." : "No credit on this Mark — your total stands."} positive={positive} />
+          <FeedbackBanner
+            headline={positive ? "Correct" : "Not this time"}
+            subline={data.commentary[positive ? "positive" : "negative"]}
+            positive={positive}
+          />
         </div>
       </div>
     );

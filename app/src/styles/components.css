@@ -107,12 +107,16 @@
 /* Dark footer sandwiching the parchment body (Design Standard §Surface
    stack). The primary CTA is outlined gold on this dark ground, sharp-ish
    on desktop and a pill on mobile. */
+/* Mobile stacks hint above the full-width button — a hint sharing a row
+   with a width:100% button has nowhere to go and wraps to one word per
+   line at every mobile viewport (320-899px), not just narrow phones.
+   Desktop has room for both side by side, so it switches back to a row. */
 .pm-action-bar {
   flex: none; background: var(--ink);
   padding: 16px 18px calc(16px + env(safe-area-inset-bottom));
-  display: flex; align-items: center; justify-content: flex-end; gap: 14px;
+  display: flex; flex-direction: column; align-items: stretch; justify-content: flex-end; gap: 10px;
 }
-.pm-action-bar__hint { font: 400 13px/1 var(--font-sans); color: var(--meta-dark); flex: 1; }
+.pm-action-bar__hint { font: 400 13px/1.4 var(--font-sans); color: var(--meta-dark); text-align: center; }
 .pm-action-bar .pm-btn {
   width: 100%;
   background: transparent; color: var(--gold); border: 1px solid var(--gold);
@@ -124,7 +128,8 @@
 }
 
 @media (min-width: 900px) {
-  .pm-action-bar { padding: 18px 40px; }
+  .pm-action-bar { flex-direction: row; align-items: center; gap: 14px; padding: 18px 40px; }
+  .pm-action-bar__hint { flex: 1; text-align: left; }
   .pm-action-bar .pm-btn { width: auto; border-radius: 5px; }
 }
 
@@ -201,6 +206,11 @@
 .pm-option-resolved--correct .pm-option-resolved__tag { color: var(--green); }
 .pm-option-resolved--incorrect .pm-option-resolved__tag { color: var(--rust); }
 
+@media (min-width: 900px) {
+  /* Same reading-width cap as .pm-fact-note — see the note there. */
+  .pm-option-resolved { max-width: 640px; }
+}
+
 /* ============ See reveal compare ============ */
 .pm-see-compare { display: flex; gap: 14px; }
 .pm-see-card { flex: 1; border: 2px solid var(--rust); border-radius: var(--radius-option); overflow: hidden; }
@@ -216,6 +226,9 @@
 
 @media (min-width: 900px) {
   .pm-see-card__image { height: 210px; }
+  /* Same reading-width cap as .pm-fact-note — these reveal columns have no
+     map competing for the space, so nothing else needs the full flex:1 width. */
+  .pm-see-compare { max-width: 640px; }
 }
 
 /* ============ Reveal shared ============ */
@@ -237,6 +250,10 @@
 .pm-fact-note__body { margin: 0; font: 400 13px/1.55 var(--font-sans); color: var(--muted-ink); text-wrap: pretty; }
 
 @media (min-width: 900px) {
+  /* The map above this can and should use all the space flex:1 gives it,
+     but body text stretched to that same width is uncomfortable to read —
+     cap the line length instead of the column. */
+  .pm-fact-note { max-width: 640px; }
   .pm-fact-note__body { font-size: 14px; }
 }
 
@@ -399,7 +416,10 @@
 .pm-explainer-card { background: var(--deep-ink); border: 1px solid var(--muted-ink); border-radius: var(--radius-card); padding: 18px; display: flex; flex-direction: column; gap: 10px; color: var(--card); }
 .pm-explainer-card p { margin: 0; font: 400 14px/1.55 var(--font-sans); color: var(--card); }
 .pm-explainer-order { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-.pm-explainer-order__item { display: flex; flex-direction: column; gap: 6px; }
+/* min-width: 0 lets a grid item shrink below its content's intrinsic
+   width — without it, a single long label ("SUCCESSION") forces its whole
+   column wider than its neighbors' equal 1fr share, throwing the grid off. */
+.pm-explainer-order__item { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
 .pm-explainer-order__bar { height: 5px; border-radius: 99px; background: var(--muted-ink); }
 .pm-explainer-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
 
@@ -488,16 +508,20 @@
 .pm-results__marks-row { display: flex; gap: 6px; }
 .pm-results__mark-block { flex: 1; height: 34px; border-radius: 5px; }
 .pm-results__marks-labels { display: flex; gap: 6px; font: 600 10px/1 var(--font-sans); letter-spacing: .04em; color: var(--muted-ink); }
-.pm-results__marks-labels span { flex: 1; text-align: center; }
+/* min-width: 0 — see the matching note on .pm-explainer-order__item. */
+.pm-results__marks-labels span { flex: 1; min-width: 0; text-align: center; }
 .pm-results__stats-row { display: flex; flex-direction: column; gap: 14px; }
 .pm-results__stat-num { font: 600 26px/1 var(--font-sans); letter-spacing: -.02em; }
 .pm-results__side { display: flex; flex-direction: column; gap: 14px; }
 
 @media (min-width: 900px) {
-  .pm-results__top { padding: 48px 56px 36px; flex-direction: row; align-items: flex-end; justify-content: space-between; }
+  /* Capped and centered so the layout doesn't stretch edge-to-edge on very
+     large monitors — the dark bars above/below stay full-bleed, only the
+     content row is contained. */
+  .pm-results__top { padding: 48px 56px 36px; flex-direction: row; align-items: flex-end; justify-content: space-between; max-width: 1400px; margin: 0 auto; }
   .pm-results__theme { font-size: 48px; }
   .pm-results__score { font-size: 96px; }
-  .pm-results__body { padding: 36px 56px; display: grid; grid-template-columns: 1fr 400px; gap: 36px; }
+  .pm-results__body { padding: 36px 56px; display: grid; grid-template-columns: 1fr 400px; gap: 36px; max-width: 1400px; margin: 0 auto; }
   .pm-results__stats-row { flex-direction: row; }
 }
 
@@ -529,10 +553,10 @@
 .pm-summary__table-total span:last-child { font: 600 24px/1 var(--font-sans); }
 
 @media (min-width: 900px) {
-  .pm-summary__top { padding: 32px 48px; align-items: flex-end; }
+  .pm-summary__top { padding: 32px 48px; align-items: flex-end; max-width: 1400px; margin: 0 auto; }
   .pm-summary__title { font-size: 30px; }
   .pm-summary__score { font-size: 40px; }
-  .pm-summary__body { padding: 36px 48px; display: grid; grid-template-columns: 340px 1fr; gap: 32px; }
+  .pm-summary__body { padding: 36px 48px; display: grid; grid-template-columns: 340px 1fr; gap: 32px; max-width: 1400px; margin: 0 auto; }
   .pm-summary__table-header, .pm-summary__table-row {
     grid-template-columns: 56px 1fr 170px 170px 110px; padding: 19px 24px;
   }
@@ -550,5 +574,5 @@
 
 @media (min-width: 900px) {
   .pm-collections { padding: 48px 56px; }
-  .pm-collections__grid { grid-template-columns: repeat(3, 1fr); }
+  .pm-collections__grid { grid-template-columns: repeat(3, 1fr); max-width: 1400px; margin: 0 auto; }
 }

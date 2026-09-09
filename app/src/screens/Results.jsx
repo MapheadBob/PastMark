@@ -57,7 +57,7 @@ export default function Results() {
             </div>
             <div className="pm-results__marks-labels">
               {result.marks.map((m) => (
-                <span key={m.key}>{markMeta[m.key].label}</span>
+                <span key={m.key}>{markMeta[m.key].tag}</span>
               ))}
             </div>
           </div>

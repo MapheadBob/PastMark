@@ -9,7 +9,7 @@
   flex: none;
 }
 .pm-masthead__left { display: flex; align-items: center; gap: 18px; }
-.pm-masthead__wordmark { font: 600 18px/1 var(--font-sans); letter-spacing: .04em; }
+.pm-masthead__logo { height: 48px; width: auto; flex: none; display: block; }
 .pm-masthead__nav-item {
   display: none;
   background: none; border: none; color: var(--meta-dark);
@@ -36,6 +36,7 @@
 @media (min-width: 900px) {
   .pm-masthead { padding: 0 40px; height: 68px; }
   .pm-masthead__left { gap: 40px; }
+  .pm-masthead__logo { height: 60px; }
   .pm-masthead__nav-item { display: inline; }
   .pm-avatar { width: 34px; height: 34px; font-size: 13px; }
 }

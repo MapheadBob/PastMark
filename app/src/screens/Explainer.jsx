@@ -29,7 +29,7 @@ export default function Explainer() {
             {marksOrder.map((key) => (
               <div key={key} className="pm-explainer-order__item">
                 <span className="pm-explainer-order__bar" style={{ background: markColor(key).bg }} />
-                <span className="pm-eyebrow">{markMeta[key].label}</span>
+                <span className="pm-eyebrow">{markMeta[key].tag}</span>
               </div>
             ))}
           </div>

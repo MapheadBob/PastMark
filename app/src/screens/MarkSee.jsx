@@ -41,7 +41,7 @@ export default function MarkSee({ session }) {
                   <>
                     <div className="pm-see-card__image">{yourOption.caption}</div>
                     <div className="pm-see-card__body">
-                      <span className="pm-mono-label" style={{ color: "var(--rust)" }}>✕ YOUR PICK</span>
+                      <span className="pm-eyebrow" style={{ color: "var(--rust)" }}>✕ YOUR PICK</span>
                       <span>{yourOption.label}</span>
                     </div>
                   </>
@@ -50,7 +50,7 @@ export default function MarkSee({ session }) {
               <div className="pm-see-card pm-see-card--correct">
                 <div className="pm-see-card__image">{correctOption.caption}</div>
                 <div className="pm-see-card__body">
-                  <span className="pm-mono-label" style={{ color: "var(--green)" }}>✓ CORRECT ANSWER</span>
+                  <span className="pm-eyebrow" style={{ color: "var(--green)" }}>✓ CORRECT ANSWER</span>
                   <span>{correctOption.label}</span>
                 </div>
               </div>
@@ -83,7 +83,7 @@ export default function MarkSee({ session }) {
   return (
     <div className="pm-mark-screen">
       <div className="pm-mark-prompt-band">
-        <span className="pm-mono-label pm-mark-prompt-band__kicker">FOUR REAL LANDMARKS — ONE IS THIS CITY'S</span>
+        <span className="pm-eyebrow pm-mark-prompt-band__kicker">FOUR REAL LANDMARKS — ONE IS THIS CITY'S</span>
         <h2 className="pm-mark-prompt-band__prompt">{prompt}</h2>
       </div>
       <div className="pm-option-grid-wrap">

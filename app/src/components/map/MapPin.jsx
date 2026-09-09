@@ -2,9 +2,10 @@
  * Ported from GeoIQ's components/game/MapPin.tsx — same imperative
  * maplibre-gl Marker mechanism (element created once, synced via a
  * coordinates effect, pin-drop animation replayed on each placement) but
- * restyled to PastMark's own marker language per DESIGN.md's Map component
- * spec: "the player's pin is indigo with a cream ring; the true location is
- * oxblood, larger ring, labelled in mono" — not GeoIQ's coral pennant /
+ * restyled to PastMark's own marker language: the player's guess is slate
+ * blue with a cream ring (the player's own input, same token as the When
+ * Mark); the true location is gold with a larger ring (the answer/target
+ * color used throughout the Design Standard) — not GeoIQ's coral pennant /
  * gold star shapes, which are that game's own visual identity.
  */
 import { useEffect, useRef } from "react";
@@ -18,7 +19,7 @@ function markerSvgMarkup(variant) {
          <circle cx="13" cy="13" r="9" fill="#3F5E73" stroke="#FFFDF8" stroke-width="3" />
        </svg>`
     : `<svg width="32" height="32" viewBox="0 0 32 32" role="img" aria-label="Correct location" style="filter: drop-shadow(0 1px 3px rgb(0 0 0 / 0.45))">
-         <circle cx="16" cy="16" r="11" fill="#7C3247" stroke="#FFFDF8" stroke-width="4" />
+         <circle cx="16" cy="16" r="11" fill="#A9763F" stroke="#FFFDF8" stroke-width="4" />
        </svg>`;
 }
 

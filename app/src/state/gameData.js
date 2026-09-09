@@ -14,7 +14,7 @@ export function defaultProfile() {
       dailyNumber: 411,
       theme: "Machu Picchu",
       score: 5940,
-      squares: ["green", "green", "rust", "green", "bronze", "green", "green"],
+      squares: ["green", "green", "rust", "green", "rust", "green", "green"],
     },
     lastResult: null,
   };

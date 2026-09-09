@@ -1,6 +1,8 @@
 import Masthead from "../components/Masthead";
+import MarkTag from "../components/MarkTag";
 import ResultSquares, { tierToColor } from "../components/ResultSquares";
 import { marksOrder, markMeta, subjectPack } from "../data/subjectPack";
+import { markColor } from "../lib/markColors";
 import { formatCountdown, formatLongDate, msUntilNextUtcMidnight } from "../lib/date";
 import { useGameDispatch, useGameState } from "../state/GameContext";
 
@@ -8,7 +10,7 @@ function CollectionsPreview({ collections, onViewAll }) {
   return (
     <div className="pm-card pm-side-card">
       <div className="pm-side-card__header">
-        <span className="pm-mono-label">COLLECTIONS</span>
+        <span className="pm-eyebrow">COLLECTIONS</span>
         <button type="button" className="pm-link" onClick={onViewAll}>
           View all
         </button>
@@ -17,7 +19,7 @@ function CollectionsPreview({ collections, onViewAll }) {
         <div key={name} className="pm-collection-row">
           <div className="pm-collection-row__labels">
             <span>{name}</span>
-            <span className="pm-mono-label">{discovered}/{total}</span>
+            <span className="pm-eyebrow">{discovered}/{total}</span>
           </div>
           <div className="pm-collection-row__track">
             <div className="pm-collection-row__fill" style={{ width: `${(discovered / total) * 100}%` }} />
@@ -32,10 +34,10 @@ function YesterdayCard({ yesterday }) {
   if (!yesterday) return null;
   return (
     <div className="pm-card pm-side-card">
-      <span className="pm-mono-label">YESTERDAY · {yesterday.theme.toUpperCase()}</span>
+      <span className="pm-eyebrow">YESTERDAY · {yesterday.theme.toUpperCase()}</span>
       <div className="pm-yesterday-score">
         <span>{yesterday.score.toLocaleString()}</span>
-        <span className="pm-mono-label">Daily {yesterday.dailyNumber}</span>
+        <span className="pm-eyebrow">Daily {yesterday.dailyNumber}</span>
       </div>
       <div className="pm-yesterday-squares">
         {yesterday.squares.map((color, idx) => (
@@ -50,7 +52,7 @@ function NotStarted({ profile, dispatch }) {
   return (
     <div className="pm-landing__grid">
       <div className="pm-card pm-landing-hero">
-        <span className="pm-mono-label pm-landing-hero__date">{formatLongDate()} · DAILY {subjectPack.dailyNumber}</span>
+        <span className="pm-eyebrow pm-landing-hero__date">{formatLongDate()} · DAILY {subjectPack.dailyNumber}</span>
         <h1 className="pm-landing-hero__title">Seven Marks. One subject.</h1>
         <p className="pm-landing-hero__body">
           One place, person or event, from seven angles — where it was, when it turned, what it
@@ -58,8 +60,8 @@ function NotStarted({ profile, dispatch }) {
         </p>
         <div className="pm-mark-chips">
           {marksOrder.map((key, i) => (
-            <span key={key} className="pm-mark-chip">
-              {i + 1} {markMeta[key].label}
+            <span key={key} className="pm-mark-chips__item">
+              <span className="pm-mark-chips__num">{i + 1}</span> <MarkTag markKey={key} />
             </span>
           ))}
         </div>
@@ -85,8 +87,8 @@ function InProgress({ session, dispatch }) {
     <div className="pm-landing__center">
       <div className="pm-card pm-landing-progress">
         <div className="pm-landing-progress__top">
-          <span className="pm-mono-label">IN PROGRESS · DAILY {subjectPack.dailyNumber} · {subjectPack.theme.toUpperCase()}</span>
-          <span className="pm-mono-label pm-landing-progress__saved">PROGRESS SAVED</span>
+          <span className="pm-eyebrow">IN PROGRESS · DAILY {subjectPack.dailyNumber} · {subjectPack.theme.toUpperCase()}</span>
+          <span className="pm-eyebrow pm-landing-progress__saved">PROGRESS SAVED</span>
         </div>
         <div className="pm-landing-progress__mid">
           <span className="pm-landing-progress__title">Mark {idx + 1} of 7</span>
@@ -97,11 +99,19 @@ function InProgress({ session, dispatch }) {
         </div>
         <div className="pm-mark-rail pm-mark-rail--landing">
           {marksOrder.map((key, i) => {
-            const answer = session.answers[key];
-            let color = "var(--rule)";
-            if (i === idx) color = "var(--indigo)";
-            else if (answer) color = `var(--${tierToColor(answer.accuracy, key === "match")})`;
-            return <span key={key} className="pm-mark-rail__dot pm-mark-rail__dot--lg" style={{ background: color }} />;
+            // Reached (current or completed) = the mark's own category
+            // color; upcoming = the rail's neutral default (var(--rule),
+            // set in CSS — this card sits on a light surface, not the dark
+            // header, so the header rail's translucent-cream default would
+            // be invisible here).
+            const color = i <= idx ? markColor(key).bg : undefined;
+            return (
+              <span
+                key={key}
+                className="pm-mark-rail__dot pm-mark-rail__dot--lg"
+                style={color ? { background: color } : undefined}
+              />
+            );
           })}
         </div>
         <div className="pm-mark-rail__labels">
@@ -131,16 +141,16 @@ function Completed({ profile, dispatch }) {
   return (
     <div className="pm-landing__grid">
       <div className="pm-card pm-landing-hero">
-        <span className="pm-mono-label">TODAY'S THEME · DAILY {subjectPack.dailyNumber}</span>
+        <span className="pm-eyebrow">TODAY'S THEME · DAILY {subjectPack.dailyNumber}</span>
         <div className="pm-landing-hero__theme">{subjectPack.theme}</div>
         <div className="pm-landing-progress__rule" />
         <div className="pm-landing-hero__score-row">
           <span className="pm-landing-hero__score">{result ? result.totalScore.toLocaleString() : "—"}</span>
           <span>your score</span>
         </div>
-        {result && <ResultSquares marks={result.marks.map((m) => ({ key: m.key, color: tierToColor(m.accuracy, m.key === "match") }))} />}
+        {result && <ResultSquares marks={result.marks.map((m) => ({ key: m.key, color: tierToColor(m.accuracy) }))} />}
         <p className="pm-landing-hero__body">
-          Today's subject is done. A new subject unlocks at midnight UTC — <span className="pm-mono-label" style={{ letterSpacing: 0 }}>{formatCountdown(ms)}</span>.
+          Today's subject is done. A new subject unlocks at midnight UTC — <span className="pm-eyebrow" style={{ letterSpacing: 0 }}>{formatCountdown(ms)}</span>.
         </p>
         <div className="pm-landing-hero__cta">
           <button type="button" className="pm-btn pm-btn--ghost" onClick={() => dispatch({ type: "GO_TO", screen: "results" })}>
@@ -153,8 +163,8 @@ function Completed({ profile, dispatch }) {
       </div>
       <div className="pm-landing__side">
         {result && result.collectionsAdvanced.length > 0 && (
-          <div className="pm-card pm-side-card pm-side-card--bronze">
-            <span className="pm-mono-label" style={{ color: "var(--bronze)" }}>NEW DISCOVERIES</span>
+          <div className="pm-card pm-side-card pm-side-card--gold">
+            <span className="pm-eyebrow" style={{ color: "var(--gold)" }}>NEW DISCOVERIES</span>
             {Object.entries(profile.collections)
               .filter(([name]) => result.collectionsAdvanced.includes(name))
               .map(([name, { discovered, total }]) => (
@@ -164,14 +174,14 @@ function Completed({ profile, dispatch }) {
           </div>
         )}
         <div className="pm-card pm-side-card">
-          <span className="pm-mono-label">TODAY'S AVERAGE</span>
+          <span className="pm-eyebrow">TODAY'S AVERAGE</span>
           <div className="pm-yesterday-score">
             <span>{result ? result.averageScore.toLocaleString() : "—"}</span>
             <span style={{ color: "var(--green)" }}>you beat {result?.beatPercent ?? 0}%</span>
           </div>
         </div>
         <div className="pm-card pm-side-card">
-          <span className="pm-mono-label">STREAK</span>
+          <span className="pm-eyebrow">STREAK</span>
           <span className="pm-side-card__note">{profile.streak} days</span>
         </div>
       </div>

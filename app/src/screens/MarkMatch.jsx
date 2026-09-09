@@ -232,7 +232,7 @@ export default function MarkMatch({ session }) {
   return (
     <div className="pm-mark-screen">
       <div className="pm-mark-prompt-band">
-        <span className="pm-mono-label pm-mark-prompt-band__kicker">PARTIAL CREDIT — EACH CORRECT PAIR EARNS ITS SHARE</span>
+        <span className="pm-eyebrow pm-mark-prompt-band__kicker">PARTIAL CREDIT — EACH CORRECT PAIR EARNS ITS SHARE</span>
         <h2 className="pm-mark-prompt-band__prompt">{prompt}</h2>
       </div>
       <div className="pm-option-grid-wrap">

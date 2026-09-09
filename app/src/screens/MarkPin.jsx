@@ -90,7 +90,7 @@ export default function MarkPin({ session }) {
   return (
     <div className="pm-mark-screen">
       <div className="pm-mark-prompt-band">
-        <span className="pm-mono-label pm-mark-prompt-band__kicker">MARK 1 · PLACE</span>
+        <span className="pm-eyebrow pm-mark-prompt-band__kicker">MARK 1 · PLACE</span>
         <h2 className="pm-mark-prompt-band__prompt">{subjectPack.pin.prompt}</h2>
         <p className="pm-mark-prompt-band__hint">
           Click the map to place your pin. Click again to adjust — nothing counts until you lock it in.

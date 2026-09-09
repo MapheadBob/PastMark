@@ -59,7 +59,7 @@ export default function MarkChoice({ session, markKey, data, kicker, markNumber,
               <span className="pm-option-resolved__letter">{LETTERS[answer.selectedIndex]}</span>
               <div className="pm-option-resolved__text">
                 <span className="pm-option-resolved__label">{data.options[answer.selectedIndex]}</span>
-                <span className="pm-mono-label pm-option-resolved__tag">
+                <span className="pm-eyebrow pm-option-resolved__tag">
                   YOUR ANSWER · {positive ? "CORRECT" : "INCORRECT"}
                 </span>
               </div>
@@ -69,7 +69,7 @@ export default function MarkChoice({ session, markKey, data, kicker, markNumber,
                 <span className="pm-option-resolved__letter">{LETTERS[data.correctIndex]}</span>
                 <div className="pm-option-resolved__text">
                   <span className="pm-option-resolved__label">{data.options[data.correctIndex]}</span>
-                  <span className="pm-mono-label pm-option-resolved__tag">CORRECT ANSWER</span>
+                  <span className="pm-eyebrow pm-option-resolved__tag">CORRECT ANSWER</span>
                 </div>
               </div>
             )}
@@ -103,7 +103,7 @@ export default function MarkChoice({ session, markKey, data, kicker, markNumber,
     <div className="pm-mark-screen">
       <div className="pm-mark-prompt-band">
         {contextBanner}
-        <span className="pm-mono-label pm-mark-prompt-band__kicker">{kicker}</span>
+        <span className="pm-eyebrow pm-mark-prompt-band__kicker">{kicker}</span>
         <h2 className="pm-mark-prompt-band__prompt">{data.prompt}</h2>
       </div>
       <div className="pm-option-grid-wrap">

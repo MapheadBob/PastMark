@@ -1,18 +1,15 @@
+import { accuracyTier } from "../lib/markColors";
+
 const COLOR_VAR = {
   green: "var(--green)",
   rust: "var(--rust)",
-  bronze: "var(--bronze)",
 };
 
-export function tierToColor(accuracy, isMatch) {
-  if (isMatch) {
-    if (accuracy >= 100) return "green";
-    if (accuracy > 0) return "bronze";
-    return "rust";
-  }
-  if (accuracy >= 60) return "green";
-  if (accuracy > 0) return "bronze";
-  return "rust";
+// Binary accuracy — green at or above half credit, rust below it (Design
+// Standard: no third "partial" tier). `isMatch` no longer changes the rule;
+// kept as a parameter so every call site doesn't need to change at once.
+export function tierToColor(accuracy) {
+  return accuracyTier(accuracy);
 }
 
 export default function ResultSquares({ marks, size = 34 }) {

@@ -38,6 +38,7 @@ export default function MarkHeader({ markIndex, phase, runningTotal, answers, ma
   return (
     <div className="pm-mark-header">
       <div className="pm-mark-header__left">
+        <img className="pm-mark-header__mark" src="/pastmark-mark.png" alt="" aria-hidden="true" />
         <span className="pm-mono-label pm-mark-header__label">
           MARK {markIndex + 1} OF 7 · {meta.label}
           {phase === "reveal" ? " · REVEAL" : ""}

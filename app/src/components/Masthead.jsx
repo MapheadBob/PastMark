@@ -8,7 +8,10 @@ export default function Masthead() {
   return (
     <header className="pm-masthead">
       <div className="pm-masthead__left">
-        <span className="pm-masthead__wordmark">PastMark</span>
+        <div className="pm-masthead__brand">
+          <img className="pm-masthead__mark" src="/pastmark-mark.png" alt="" aria-hidden="true" />
+          <span className="pm-masthead__wordmark">PastMark</span>
+        </div>
         <button
           type="button"
           className={"pm-masthead__nav-item" + (screen === "landing" ? " pm-masthead__nav-item--active" : "")}

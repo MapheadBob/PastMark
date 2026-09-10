@@ -1,5 +1,4 @@
 import { useGameState, useGameDispatch } from "../state/GameContext";
-import pastmarkLogo from "../assets/pastmark-logo.png";
 
 export default function Masthead() {
   const { profile, screen } = useGameState();
@@ -9,7 +8,10 @@ export default function Masthead() {
   return (
     <header className="pm-masthead">
       <div className="pm-masthead__left">
-        <img className="pm-masthead__logo" src={pastmarkLogo} alt="PastMark" />
+        <div className="pm-masthead__brand">
+          <img className="pm-masthead__mark" src="/pastmark-mark.png" alt="" aria-hidden="true" />
+          <span className="pm-masthead__wordmark">PastMark</span>
+        </div>
         <button
           type="button"
           className={"pm-masthead__nav-item" + (screen === "landing" ? " pm-masthead__nav-item--active" : "")}

@@ -38,6 +38,7 @@ export default function MarkHeader({ markIndex, phase, runningTotal, markStarted
   return (
     <div className="pm-mark-header">
       <div className="pm-mark-header__left">
+        <img className="pm-mark-header__mark" src="/pastmark-mark.png" alt="" aria-hidden="true" />
         <span className="pm-eyebrow pm-mark-header__label">
           MARK {markIndex + 1} OF 7
           {phase === "reveal" ? " · REVEAL" : ""}

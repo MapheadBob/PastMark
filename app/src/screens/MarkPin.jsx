@@ -2,7 +2,6 @@ import { useState } from "react";
 import { GameMap } from "../components/map/GameMap";
 import { MapPin } from "../components/map/MapPin";
 import { DistanceLine } from "../components/map/DistanceLine";
-import ActionBar from "../components/ActionBar";
 import { FeedbackBanner, BreakdownPanel, FactNote } from "../components/Reveal";
 import { subjectPack } from "../data/subjectPack";
 import { pinAccuracy, markScore } from "../lib/scoring";
@@ -100,12 +99,15 @@ export default function MarkPin({ session }) {
         <GameMap interactive onMapClick={setPlaced}>
           {(map) => <MapPin map={map} variant="guess" coordinates={placed} />}
         </GameMap>
+        <div className="pm-map-floating-cta">
+          <span className="pm-map-floating-cta__hint">
+            {placed ? "Pin placed — adjust freely" : "Click the map to place your pin"}
+          </span>
+          <button type="button" className="pm-btn" disabled={!placed} onClick={handleLockIn}>
+            Lock In
+          </button>
+        </div>
       </div>
-      <ActionBar hint={placed ? "Pin placed — adjust freely" : "Click the map to place your pin"}>
-        <button type="button" className="pm-btn" disabled={!placed} onClick={handleLockIn}>
-          Lock In
-        </button>
-      </ActionBar>
     </div>
   );
 }

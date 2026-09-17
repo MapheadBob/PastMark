@@ -4,8 +4,6 @@
 -- docs/pastmark-person-event-spec.md ("Data Architecture") for the full
 -- rationale behind the single-`subjects`-table decision.
 
-create extension if not exists pgcrypto;
-
 create or replace function set_updated_at()
 returns trigger
 language plpgsql

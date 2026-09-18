@@ -34,9 +34,11 @@ create trigger collections_set_updated_at
 -- ---------------------------------------------------------------------------
 -- subjects — one row per Subject Pack, for any of the three subject types.
 -- `subject_type` is the addition this spec calls for (Location shipped
--- first without it). Era, Succession, Know, and the bonus categories are
--- NOT columns here — they live in `subject_questions` as flexible-slot
--- candidates (see the next migration).
+-- first without it). The Know/See/Era/Succession/bonus-category MC
+-- *questions* (prompt + distractors) are NOT columns here — they live in
+-- `subject_questions` as flexible-slot candidates (see the next migration).
+-- The `_note`/`_fact` columns below are narrative color an author draws on
+-- to write those questions, not the questions themselves.
 -- ---------------------------------------------------------------------------
 
 create table subjects (
@@ -44,6 +46,7 @@ create table subjects (
   subject_type text not null check (subject_type in ('location', 'person', 'event')),
   slug text not null unique,
   name text not null,
+  short_description text,
   status text not null default 'draft' check (status in ('draft', 'published')),
 
   -- Mark 1: Pin (fixed anchor)
@@ -51,19 +54,44 @@ create table subjects (
   pin_lat double precision,
   pin_lon double precision,
   pin_label text,
-  pin_fact text,
+  pin_reveal_fact text,
   pin_commentary_positive text,
   pin_commentary_negative text,
 
   -- Mark 2: When (fixed anchor)
+  when_label text,
   when_prompt text,
+  when_date_display text,
   when_min_year int,
   when_max_year int,
   when_true_year int,
+  when_precision text check (when_precision in ('year', 'month', 'day')),
   when_tags text[] not null default '{}',
-  when_fact text,
+  when_reveal_fact text,
   when_commentary_positive text,
   when_commentary_negative text,
+
+  -- Editorial rationale for the Mark 7 (Match/Order) mode chosen for this
+  -- subject; the anchor content itself lives in subject_match_items.
+  match_order_rationale text,
+
+  -- Narrative facts backing the flexible-slot Know/Era/Succession marks.
+  -- These are supporting color an author drew on, not the interactive
+  -- question itself — that lives in subject_questions (mechanic_type
+  -- 'era'/'succession'/'know'/...) with its own prompt + distractors.
+  era_note text,
+  succession_note text,
+  know_fact_1 text,
+  know_fact_2 text,
+
+  -- Geography/classification metadata. Originally Location-only; the
+  -- content team generalized it to Person and Event subjects too.
+  country_region text,
+  continent text,
+
+  -- Editorial/content-ops metadata, never shown to players.
+  sensitivity_note text,
+  source_notes text,
 
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()

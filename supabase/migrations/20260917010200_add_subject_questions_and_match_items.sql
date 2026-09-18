@@ -29,6 +29,7 @@ create table subject_questions (
   slot_position smallint check (slot_position between 3 and 6),
   pair_group_id uuid,
   pair_order smallint check (pair_order in (1, 2)),
+  notes text, -- research citation / authoring rationale, never shown to players
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now(),
 
@@ -123,6 +124,16 @@ create constraint trigger subject_questions_pairing_check
 
 -- ---------------------------------------------------------------------------
 -- subject_match_items — Mark 7 (Match & Order), all four content modes.
+--
+-- Every item is fundamentally a {label, place, year} life-event-style triple
+-- (per the Person spec's life-events model, generalized to every subject
+-- type) — `place` and `year` are always populated regardless of `mode`;
+-- `mode` just picks which fact the player is quizzed on (or uses ordering).
+-- `related_fact` and `correct_position` are the two mode-specific
+-- exceptions, only required for 'subject_to_event' and 'order' respectively.
+--
+-- Years are plain integers with simple negation for BCE (30 BCE = -30, not
+-- astronomical year numbering where 30 BCE would be -29).
 -- ---------------------------------------------------------------------------
 
 create table subject_match_items (
@@ -130,17 +141,17 @@ create table subject_match_items (
   subject_id uuid not null references subjects (id) on delete cascade,
   mode text not null check (mode in ('subject_to_year', 'subject_to_place', 'subject_to_event', 'order')),
   item_label text not null,
-  match_value text,
-  correct_position smallint check (correct_position between 1 and 4),
-  year int,
+  place text not null,
+  year int not null,
+  related_fact text, -- required when mode = 'subject_to_event'
+  correct_position smallint check (correct_position between 1 and 4), -- required + unique when mode = 'order'
   sort_order smallint not null default 0,
+  notes text, -- research citation and/or a finer display date, never shown pre-answer
   created_at timestamptz not null default now(),
 
   constraint subject_match_items_mode_shape check (
-    (mode in ('subject_to_year', 'subject_to_place', 'subject_to_event')
-      and match_value is not null and correct_position is null)
-    or
-    (mode = 'order' and correct_position is not null and match_value is null)
+    (mode != 'subject_to_event' or related_fact is not null)
+    and (mode != 'order' or correct_position is not null)
   )
 );
 

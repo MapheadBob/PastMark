@@ -48,7 +48,7 @@ The Subjects tab carries several fields with no home in the current schema:
 
 Also renaming for vocabulary alignment with the content team (no functional change): `pin_fact` → `pin_reveal_fact`, `when_fact` → `when_reveal_fact`.
 
-**Open question, not resolved here:** the sheet has no per-subject `when_min_year`/`when_max_year` range at all. Either the slider range is computed at runtime rather than authored, or it was dropped from the design. Recommend confirming with product before deciding whether those two columns are still needed — left in place for now rather than guessing.
+**Resolved:** the sheet has no per-subject `when_min_year`/`when_max_year` range at all — the slider range is computed at runtime rather than authored. `when_min_year`/`when_max_year` stay as optional per-subject overrides (`NULL` = "use the computed default"). The default is **100 years before the oldest year fact anywhere in the corpus, through the current year** — computed live, not a static authored value, since both ends move as content is added and time passes. "Oldest year fact" is taken across both `subjects.when_true_year` and `subject_match_items.year`, since a subject's own Match/Order items can predate the date its When mark anchors on (e.g. Cleopatra's earliest life-event item is older than her death date). See `default_when_slider_min_year()` / `default_when_slider_max_year()` / `subject_when_slider_range(subject_id)` in the schema.
 
 ### 2. `subject_match_items` — the generic `match_value` design doesn't match reality
 

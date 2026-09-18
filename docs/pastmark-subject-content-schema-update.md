@@ -88,8 +88,21 @@ Add `notes text null`, mirroring the Flexible_Questions tab's own Notes column (
 - No new mechanic types needed — every `mechanic_type` seen in the sample (`know`, `era`, `legacy`, `contemporaries`, `nickname`, `world_firsts`) is already in the existing CHECK list.
 - No changes to `collections`, `subject_collections`, `subject_images`, or the publish-validation / companion-pairing / 15-year-rule triggers — none of them reference the columns being renamed or restructured.
 
+## Full-corpus import (175/175 subjects)
+
+The earlier sections were based on a partial read of the workbook (tooling truncation). Once the full workbook was pulled (exported as `.xlsx` and parsed directly, bypassing the truncated markdown conversion), it validated almost everything above and surfaced three more things, all landed in `20260918000000_prep_for_content_import.sql` and `20260918010000_import_175_subject_pack.sql`:
+
+- **`mechanic_type` was missing four values the Location batch actually uses**: `know_landmark`, `see_location`, `see_landmark`, `inventions` — more specific than the generic `know`/`see` Person/Event uses. Added to the CHECK constraint.
+- **Publish validation only fired on `UPDATE`**, so a row inserted with `status = 'published'` directly skipped it entirely. Fixed to also run on `INSERT` (in practice a subject can never legitimately publish on its own `INSERT` anyway, since its Match/Order items and questions are FK'd to it and can't exist yet — so this only closes a bypass, it doesn't change the real import flow, which is insert-as-draft → add children → update to published).
+- **`subjects.external_id`** added (`text unique`) to hold the workbook's own ids (`P001`, `E001`, `L001`, ...), so this and future imports can match rows by source id instead of a generated UUID.
+
+One real content gap, resolved with a documented default rather than a schema change: **Location subjects author 9 Flexible_Questions candidates each (Person/Event only ever author exactly 4), and the workbook carries no `is_selected` flag** to say which 4 of a Location subject's 9 should ship. The import selects the lowest 4 `slot_number`s per subject and leaves the other 5 as an unselected candidate pool (available for future admin re-selection tooling). This is a judgment call, not a discovered fact — flagging it here in case product wants a different default (e.g. prioritizing variety across mechanic types rather than raw slot order).
+
+Full-corpus validation, against a local embedded Postgres: all 175 subjects, 700 Match/Order items, and 950 flexible questions imported and every subject published cleanly — meaning the entire real corpus satisfies the schema's NOT NULL constraints, the mode-uniformity trigger, the 15-year Order rule, and the publish-completeness trigger with zero exceptions or manual fixes needed.
+
 ## Next steps
 
-1. Land the schema changes above as an update to the two migrations in PR #6 (still unmerged, so editing in place rather than layering an ALTER migration on a same-PR CREATE).
-2. Re-verify against a local embedded Postgres the same way the original migrations were verified.
-3. Write the actual import script mapping sheet rows → tables once schema lands (out of scope here — this doc is schema only, not the import pipeline).
+1. ~~Land the schema changes above as an update to the two migrations in PR #6~~ — done (PR #6, then #7 after #6 merged first).
+2. ~~Re-verify against a local embedded Postgres~~ — done, including the full 175-subject import.
+3. ~~Write the actual import script mapping sheet rows → tables~~ — done (`20260918010000_import_175_subject_pack.sql`, generated from the workbook, not hand-written — regenerate from source rather than hand-editing).
+4. Apply these migrations to the real Supabase project (`supabase db push` or equivalent) — not done here, since this repo has no live Supabase project connection configured.

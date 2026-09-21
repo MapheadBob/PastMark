@@ -5,6 +5,8 @@
 **Scope:** Reconciles the DB schema landed in [PR #6](https://github.com/MapheadBob/PastMark/pull/6) (`subjects`, `subject_questions`, `subject_match_items`) against the actual authored content, and specifies the schema changes needed before that content can be imported.
 **Relationship to other docs:** Extends *PastMark — Person & Event Subject Types* (`pastmark-person-event-spec.md`), which this content was authored against.
 
+> **Naming update (2026-09-20):** every PastMark table, index, constraint, trigger, policy and function now carries a `pm_` prefix (e.g. `subjects` is `pm_subjects`, `set_updated_at` is `pm_set_updated_at`), because the Supabase project is shared with other apps. Table names in this document and in `pastmark-person-event-spec.md` are the original, unprefixed names. See `supabase/migrations/20260920000000_prefix_pastmark_tables.sql`.
+
 ---
 
 ## Source reviewed
